@@ -151,34 +151,7 @@ svg { display: block; }
 }
 .logo-words span { font-size: 0.75rem; color: var(--fg-muted); letter-spacing: 0.04em; }
 
-.search-bar {
-  flex: 1;
-  max-width: 500px;
-  margin: 0 auto;
-  position: relative;
-}
-.search-bar input {
-  width: 100%;
-  padding: 9px 42px 9px 14px;
-  border: 1.5px solid var(--border);
-  border-radius: 25px;
-  background: var(--bg-sub);
-  color: var(--fg);
-  font-family: 'Heebo', sans-serif;
-  font-size: 0.88rem;
-  outline: none;
-  transition: border-color 0.2s, box-shadow 0.2s;
-}
-.search-bar input::placeholder { color: var(--fg-muted); }
-.search-bar input:focus {
-  border-color: var(--accent-2);
-  box-shadow: 0 0 0 3px rgba(47,146,84,0.15);
-}
-.search-bar button {
-  position: absolute; left: 12px; top: 50%; transform: translateY(-50%);
-  background: none; border: none; color: var(--fg-muted); cursor: pointer;
-  display: flex; align-items: center;
-}
+/* search bar removed */
 
 .hdr-actions { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
 .icon-btn {
@@ -583,6 +556,116 @@ svg { display: block; }
 .stars { color: #F59E0B; font-size: 0.78rem; display: flex; gap: 1px; }
 .review-count { font-size: 0.75rem; color: var(--fg-muted); }
 
+/* ---- Cart Drawer ---- */
+.cart-overlay {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.45);
+  z-index: 1100; opacity: 0; pointer-events: none; transition: opacity 0.25s;
+}
+.cart-overlay.open { opacity: 1; pointer-events: all; }
+.cart-drawer {
+  position: fixed; top: 0; left: -380px; width: 360px; max-width: 95vw;
+  height: 100%; background: var(--bg); z-index: 1200;
+  display: flex; flex-direction: column;
+  box-shadow: 4px 0 32px rgba(0,0,0,0.18);
+  transition: left 0.3s cubic-bezier(0.4,0,0.2,1);
+}
+.cart-drawer.open { left: 0; }
+.cart-drawer-hdr {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 18px 20px; border-bottom: 1.5px solid var(--border);
+  font-size: 1.05rem;
+}
+.cart-close-btn {
+  background: none; border: none; font-size: 1.3rem; cursor: pointer;
+  color: var(--fg-muted); padding: 4px 8px; border-radius: 6px;
+}
+.cart-close-btn:hover { background: var(--bg-sub); }
+.cart-drawer-body { flex: 1; overflow-y: auto; padding: 16px 20px; }
+.cart-empty-msg { color: var(--fg-muted); text-align: center; padding: 48px 0; font-size: 0.95rem; }
+.cart-item {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 12px 0; border-bottom: 1px solid var(--border);
+  gap: 10px;
+}
+.cart-item-info { flex: 1; min-width: 0; }
+.cart-item-name { display: block; font-size: 0.88rem; font-weight: 600; color: var(--fg); }
+.cart-item-cat { display: block; font-size: 0.75rem; color: var(--fg-muted); margin-top: 2px; }
+.cart-item-qty {
+  display: flex; align-items: center; gap: 8px;
+  background: var(--bg-sub); border-radius: 20px; padding: 3px 10px;
+  font-size: 0.9rem; font-weight: 600;
+}
+.cart-item-qty button {
+  background: none; border: none; cursor: pointer; color: var(--accent);
+  font-size: 1.1rem; padding: 0 2px; line-height: 1;
+}
+.cart-drawer-footer { padding: 16px 20px; border-top: 1.5px solid var(--border); display: flex; flex-direction: column; gap: 10px; }
+.cart-total-row { display: flex; justify-content: space-between; font-size: 1rem; }
+.cart-checkout-btn {
+  background: var(--cta); color: #fff; border: none; border-radius: 10px;
+  padding: 13px; font-size: 1rem; font-weight: 700; cursor: pointer; font-family: inherit;
+  transition: background 0.15s;
+}
+.cart-checkout-btn:hover { background: var(--cta-hover); }
+.cart-clear-btn {
+  background: none; border: 1.5px solid var(--border); color: var(--fg-muted);
+  border-radius: 10px; padding: 9px; font-size: 0.85rem; cursor: pointer; font-family: inherit;
+}
+
+/* ---- Accessibility Toolbar ---- */
+.a11y-toolbar {
+  position: fixed; bottom: 180px; left: 16px; z-index: 1050;
+  display: flex; flex-direction: column; align-items: flex-start; gap: 6px;
+}
+.a11y-toggle {
+  width: 44px; height: 44px; border-radius: 50%;
+  background: var(--bg); border: 1.5px solid var(--border);
+  color: var(--fg); cursor: pointer; display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 2px 8px var(--shadow); transition: background 0.15s;
+}
+.a11y-toggle:hover { background: var(--bg-sub); }
+.a11y-panel {
+  background: var(--bg); border: 1.5px solid var(--border);
+  border-radius: 14px; padding: 12px 14px;
+  box-shadow: 0 4px 20px var(--shadow);
+  display: flex; flex-direction: column; gap: 8px; min-width: 160px;
+}
+.a11y-label { font-size: 0.75rem; color: var(--fg-muted); font-weight: 600; }
+.a11y-sep { height: 1px; background: var(--border); }
+.a11y-btn {
+  background: var(--bg-sub); border: 1.5px solid var(--border);
+  border-radius: 8px; padding: 7px 12px; font-size: 0.9rem; font-weight: 700;
+  cursor: pointer; color: var(--fg); font-family: inherit; transition: all 0.15s;
+  display: flex; align-items: center; justify-content: center;
+}
+.a11y-btn:hover { background: var(--surface); border-color: var(--accent-2); }
+.a11y-btn.on { background: var(--accent-btn); color: #fff; border-color: var(--accent-btn); }
+
+/* ---- High Contrast ---- */
+html.high-contrast {
+  --fg: #000000;
+  --fg-muted: #333333;
+  --bg: #FFFFFF;
+  --bg-sub: #F0F0F0;
+  --surface: #E0E0E0;
+  --border: #000000;
+  --accent: #005500;
+  --accent-btn: #004400;
+  --cta: #004400;
+}
+html.high-contrast .product-card,
+html.high-contrast .filter-pill,
+html.high-contrast header,
+html.high-contrast .cat-nav { border-color: #000; }
+
+/* ---- Chatbot header restart btn ---- */
+.chat-hdr-restart {
+  background: none; border: none; font-size: 1.1rem; cursor: pointer;
+  color: rgba(255,255,255,0.7); padding: 4px 8px; border-radius: 6px;
+  margin-right: auto; transition: color 0.15s;
+}
+.chat-hdr-restart:hover { color: #fff; }
+
 /* ---- Chatbot FAB ---- */
 .chat-fab {
   position: fixed;
@@ -904,14 +987,6 @@ footer {
       </div>
     </a>
 
-    <div class="search-bar">
-      <input type="text" placeholder="חפש לפי מזיק, מוצר או מותג…">
-      <button aria-label="חפש">
-        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
-        </svg>
-      </button>
-    </div>
 
     <div class="hdr-actions">
       <button class="btn-whatsapp" onclick="openChat()">
@@ -996,14 +1071,6 @@ footer {
       </div>
     </div>
 
-    <div class="pest-grid">
-      <a class="pest-card" href="#" onclick="filterCat('נמלים');return false;"><em>🐜</em><strong>נמלים</strong><span>ג'ל, גרנולר</span></a>
-      <a class="pest-card" href="#" onclick="filterCat('תיקנים');return false;"><em>🪳</em><strong>תיקנים</strong><span>פתיון, ריסוס</span></a>
-      <a class="pest-card" href="#" onclick="filterCat('מכרסמים');return false;"><em>🐭</em><strong>מכרסמים</strong><span>מלכודות, פיתיון</span></a>
-      <a class="pest-card" href="#" onclick="filterCat('יתושים');return false;"><em>🦟</em><strong>יתושים</strong><span>רשתות, קוטלים</span></a>
-      <a class="pest-card" href="#" onclick="filterCat('יונים');return false;"><em>🕊️</em><strong>יונים</strong><span>דוקרנים, רשתות</span></a>
-      <a class="pest-card" href="#" onclick="filterCat('עש');return false;"><em>🦋</em><strong>עש</strong><span>מלכודות, פרומון</span></a>
-    </div>
   </div>
 </section>
 
@@ -1729,6 +1796,44 @@ footer {
 </footer>
 
 <!-- ===================== CHATBOT ===================== -->
+<!-- ===================== CART DRAWER ===================== -->
+<div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+<aside class="cart-drawer" id="cartDrawer" role="dialog" aria-label="עגלת קניות" aria-modal="true">
+  <div class="cart-drawer-hdr">
+    <strong>🛒 עגלת הקניות</strong>
+    <button onclick="closeCart()" aria-label="סגור עגלה" class="cart-close-btn">✕</button>
+  </div>
+  <div class="cart-drawer-body" id="cartBody">
+    <p class="cart-empty-msg">העגלה ריקה — הוסף מוצרים מהחנות!</p>
+  </div>
+  <div class="cart-drawer-footer" id="cartFooter" hidden>
+    <div class="cart-total-row">
+      <span>סה"כ:</span>
+      <strong id="cartTotal">לבירור מחיר</strong>
+    </div>
+    <button class="cart-checkout-btn">המשך לתשלום</button>
+    <button class="cart-clear-btn" onclick="clearCart()">רוקן עגלה</button>
+  </div>
+</aside>
+
+<!-- ===================== ACCESSIBILITY TOOLBAR ===================== -->
+<div class="a11y-toolbar" id="a11yBar" role="toolbar" aria-label="סרגל נגישות">
+  <button class="a11y-toggle" onclick="toggleA11y()" aria-label="פתח סרגל נגישות" id="a11yToggleBtn" title="נגישות">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="1.5"/><path d="M12 7v4M8 9l4 2 4-2M10 15l-2 5M14 15l2 5"/><path d="M9 12l-2 2 1 1M15 12l2 2-1 1"/></svg>
+  </button>
+  <div class="a11y-panel" id="a11yPanel" hidden>
+    <span class="a11y-label">גודל גופן</span>
+    <button class="a11y-btn" onclick="changeFontSize(-1)" aria-label="הקטן גופן">א-</button>
+    <button class="a11y-btn" onclick="changeFontSize(0)" aria-label="גופן רגיל">א</button>
+    <button class="a11y-btn" onclick="changeFontSize(1)" aria-label="הגדל גופן">א+</button>
+    <div class="a11y-sep"></div>
+    <span class="a11y-label">ניגודיות</span>
+    <button class="a11y-btn" id="contrastBtn" onclick="toggleContrast()" aria-label="ניגודיות גבוהה">◑</button>
+    <div class="a11y-sep"></div>
+    <button class="a11y-btn" onclick="resetA11y()" aria-label="אפס הגדרות">↺</button>
+  </div>
+</div>
+
 <div class="chat-fab">
   <div class="chat-tooltip" id="chatTooltip">💬 צריכים עזרה? שאלו אותנו!</div>
   <button class="chat-fab-btn" onclick="toggleChat()" aria-label="פתח צ'אט" id="chatFab">
@@ -1744,6 +1849,7 @@ footer {
       <strong>ייעוץ א.ש.ד. הדברה</strong>
       <span><span class="online-dot"></span>מחובר עכשיו</span>
     </div>
+    <button class="chat-hdr-restart" onclick="restartChat()" aria-label="התחל שיחה מחדש" title="התחל מחדש">↺</button>
     <button class="chat-hdr-close" onclick="toggleChat()" aria-label="סגור">✕</button>
   </div>
 
@@ -1755,12 +1861,14 @@ footer {
   </div>
 
   <div class="chat-quick-wrap" id="quickReplies">
-    <button class="qbtn" onclick="quickReply('נמלים בבית')">🐜 נמלים</button>
-    <button class="qbtn" onclick="quickReply('תיקנים במטבח')">🪳 תיקנים</button>
-    <button class="qbtn" onclick="quickReply('עכברים')">🐭 עכברים</button>
+    <button class="qbtn" onclick="quickReply('נמלים')">🐜 נמלים</button>
+    <button class="qbtn" onclick="quickReply('תיקנים')">🪳 תיקנים</button>
+    <button class="qbtn" onclick="quickReply('מכרסמים')">🐭 מכרסמים</button>
     <button class="qbtn" onclick="quickReply('יתושים')">🦟 יתושים</button>
-    <button class="qbtn" onclick="quickReply('יונים על המרפסת')">🕊️ יונים</button>
-    <button class="qbtn" onclick="quickReply('משלוח חינם')">🚚 משלוח</button>
+    <button class="qbtn" onclick="quickReply('זבובים')">🪰 זבובים</button>
+    <button class="qbtn" onclick="quickReply('כינים')">🔬 כינים</button>
+    <button class="qbtn" onclick="quickReply('עש')">🦋 עש</button>
+    <button class="qbtn" onclick="quickReply('משלוח')">🚚 משלוח</button>
   </div>
 
   <div class="chat-input-row">
@@ -1776,32 +1884,100 @@ footer {
 
 <script>
 /* ---- Cart ---- */
-let cartN = 0;
+let cartItems = [];
+
 function addCart(btn) {
-  cartN++;
-  document.getElementById('cartCount').textContent = cartN;
+  const card = btn.closest('.product-card');
+  const name = card.querySelector('.prod-name')?.textContent || 'מוצר';
+  const cat  = card.dataset.cat || '';
+  const existing = cartItems.find(i => i.name === name);
+  if (existing) { existing.qty++; } else { cartItems.push({ name, cat, qty: 1 }); }
+  renderCart();
+  document.getElementById('cartCount').textContent = cartItems.reduce((s, i) => s + i.qty, 0);
   btn.textContent = '✓';
   btn.style.background = 'var(--accent)';
   setTimeout(() => { btn.textContent = '+'; btn.style.background = ''; }, 1200);
 }
 
+function renderCart() {
+  const body = document.getElementById('cartBody');
+  const footer = document.getElementById('cartFooter');
+  if (!cartItems.length) {
+    body.innerHTML = '<p class="cart-empty-msg">העגלה ריקה — הוסף מוצרים מהחנות!</p>';
+    footer.hidden = true;
+    return;
+  }
+  body.innerHTML = cartItems.map((item, idx) => `
+    <div class="cart-item">
+      <div class="cart-item-info">
+        <span class="cart-item-name">${item.name}</span>
+        <span class="cart-item-cat">${item.cat}</span>
+      </div>
+      <div class="cart-item-qty">
+        <button onclick="changeQty(${idx},-1)" aria-label="פחות">−</button>
+        <span>${item.qty}</span>
+        <button onclick="changeQty(${idx},1)" aria-label="יותר">+</button>
+      </div>
+    </div>`).join('');
+  footer.hidden = false;
+}
+
+function changeQty(idx, delta) {
+  cartItems[idx].qty += delta;
+  if (cartItems[idx].qty <= 0) cartItems.splice(idx, 1);
+  renderCart();
+  document.getElementById('cartCount').textContent = cartItems.reduce((s, i) => s + i.qty, 0);
+}
+
+function clearCart() {
+  cartItems = [];
+  renderCart();
+  document.getElementById('cartCount').textContent = '0';
+}
+
+function openCart() {
+  document.getElementById('cartDrawer').classList.add('open');
+  document.getElementById('cartOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeCart() {
+  document.getElementById('cartDrawer').classList.remove('open');
+  document.getElementById('cartOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.getElementById('cartBtn').addEventListener('click', openCart);
+
 /* ---- Chatbot ---- */
 let chatOpen = false;
+
 const responses = {
-  'נמלים': "לנמלים ממליצים על **טופג'ל** — פתיון ג'ל שמביא נמלות להרעיל את הקן מבפנים. יעיל תוך 48–72 שעות! 🐜\n👉 [טופג'ל 95 ₪]",
-  'תיקנים': "לתיקן הגרמני במטבח — **טורפדו ג'ל** הוא הפתרון הכי יעיל. לג'וקים גדולים מבחוץ — ריסוס קצה. אפשר לשלוח לך הצעה מותאמת? 🪳",
-  'עכברים': "לעכברים: **מלכודת קפיץ Victor** (29.90 ₪) היא הכי אמינה. יש גם **מלכודת הומנית** לשחרור חי (27.90 ₪). איזה סוג מתאים לכם? 🐭",
-  'יתושים': "לרשת יתושים מגנטית לחלון — 45 ₪, קלה לרכב עצמאית. לסגירת חדר — נר ציטרונלה (29 ₪). 🦟",
-  'יונים': "לדחליל עם ראש מסתובב — 79 ₪. לחסימה מלאה — רשת יונים שקופה 5×5 מ' (90 ₪) + דוקרנים (120 ₪). 🕊️",
-  'משלוח': "משלוח חינם על כל הזמנה מעל **100 ₪**! מתחת ל-100 ₪ — משלוח 25 ₪ לנקודת איסוף או 35 ₪ עד הבית. 1–4 ימי עסקים. 🚚",
+  'נמלים': "לנמלים אנחנו ממליצים:\n🐜 **מזרק ג'ל נמלים 5 גרם** — פתיון ג'ל שהנמלות מובילות לקן ומרעילות את כל האוכלוסייה, יעיל תוך 48–72 שעות.\n🐜 **גרנולה נמלים 250 גרם** — לשימוש חיצוני, מתאים לנמלת האש.\nלחץ על קטגוריית נמלים לראות את כל המוצרים!",
+  'תיקנים': "לתיקנים וג'וקים:\n🪳 **ג'ל תיקנים** — הפתרון היעיל ביותר לתיקן הגרמני במטבח ובאמבטיה. פותה את הג'וקים ומרעיל את הקולוניה.\n🪳 **גרנולה לתיקנים** — לסביבה ולחצרות.\nרצוי לסגור כל סדק לאחר הטיפול.",
+  'מכרסמים': "למכרסמים (עכברים ועכברושים):\n🐭 **מלכודות דבק** — הפשוטות והאמינות ביותר לשימוש ביתי.\n🐭 **מלכודת קפיץ** — להשמדה מיידית.\n🐭 **פיתיון רעל** — לשימוש בהגדרת בטיחות ילדים ובע\"ח.",
+  'יתושים': "ליתושים:\n🦟 **רשת יתושים מגנטית** — לדלתות וחלונות, קלה להרכבה עצמאית.\n🦟 **מנורת UV לכד חרקים** — לחדר שינה וסלון, שקטה ויעילה.\n🦟 **ספריי יתושים** — להגנה מיידית בחוץ.",
+  'זבובים': "לזבובים:\n🪰 **מלכודת זבובים דביקה** — לתלייה במטבח ובחצר.\n🪰 **מנורת UV לכד זבובים** — יעילה לסביבה מסחרית וביתית.\nלא מכיל חומרים רעילים.",
+  'כינים': "לכינים:\n🔬 **קיירליס CareLice גומיות שיער** — גומיות עם שמנים אתריים טבעיים שמרחיקות כינים מהשיער. מגיעות ב-6 יח' בגוונים שונים. מתאים לילדים!\nמוצר ישראלי ייחודי מבית א.ש.ד.",
+  'עש': "לעש ומזיקי מזון:\n🦋 **מלכודת עש פרומון** — לוכדת עשים במטח ולבית.\n🦋 **כדורי נפטלין** — להגנה על בגדי עונה.\n🦋 **מלכודת עש מזון** — לארון מזווה.",
+  'חלזונות': "לחלזונות ולשבלולים:\n🐌 **גרנולה לחלזונות** — פיתיון גרנולרי לשימוש בגינה. בטוח לצמחים, חיות מחמד ולסביבה כשמשתמשים לפי ההוראות.",
+  'נחשים': "לנחשים:\n🐍 **מרחיק נחשים** — תכשיר ריחני שיוצר מחסום שנחשים שונאים. מתאים לחצרות, מחסנים וגינות.",
+  'משלוח': "🚚 **משלוח חינם** על כל הזמנה מעל 100 ₪!\nמתחת ל-100 ₪ — משלוח 25 ₪ לנקודת איסוף או 35 ₪ עד הבית.\nזמן אספקה: 1–4 ימי עסקים לכל הארץ.",
 };
 
 function getReply(text) {
-  const t = text.toLowerCase();
+  const t = text;
   for (const [key, val] of Object.entries(responses)) {
-    if (t.includes(key.toLowerCase())) return val;
+    if (t.includes(key)) return val;
   }
-  return 'תודה! 🙏 נציג שלנו יחזור אליך תוך כמה דקות. בינתיים אפשר לחפש לפי המזיק שמעליך, או להתקשר: 03-XXXXXXX';
+  return "תודה! 🙏 נציג שלנו יחזור אליך בהקדם. ניתן לבחור קטגוריה מלמעלה לקבל המלצת מוצר מיידית.";
+}
+
+function restartChat() {
+  const msgs = document.getElementById('chatMsgs');
+  msgs.innerHTML = `<div class="msg msg-b"><div class="msg-bub">שלום! 👋 אני יכול לעזור לך למצוא את הפתרון הנכון לכל מזיק. ספר לי — מה מטריד אתכם?</div><span class="msg-ts">עכשיו</span></div>`;
+  document.getElementById('quickReplies').style.display = '';
+  document.getElementById('chatInput').value = '';
 }
 
 function appendMsg(text, isUser) {
@@ -1889,6 +2065,48 @@ function filterCat(cat) {
     window.scrollTo({ top, behavior: 'smooth' });
   }
 }
+
+/* ---- Accessibility toolbar ---- */
+let a11yOpen = false;
+let fontLevel = 0;
+let highContrast = false;
+
+function toggleA11y() {
+  a11yOpen = !a11yOpen;
+  document.getElementById('a11yPanel').hidden = !a11yOpen;
+}
+
+function changeFontSize(delta) {
+  fontLevel = delta === 0 ? 0 : Math.max(-2, Math.min(3, fontLevel + delta));
+  const sizes = [-2, -1, 0, 1, 2, 3];
+  const pcts = [80, 90, 100, 112, 125, 140];
+  document.documentElement.style.fontSize = pcts[fontLevel + 2] + '%';
+  try { localStorage.setItem('a11y_font', fontLevel); } catch(e) {}
+}
+
+function toggleContrast() {
+  highContrast = !highContrast;
+  document.documentElement.classList.toggle('high-contrast', highContrast);
+  document.getElementById('contrastBtn').classList.toggle('on', highContrast);
+  try { localStorage.setItem('a11y_contrast', highContrast ? '1' : ''); } catch(e) {}
+}
+
+function resetA11y() {
+  fontLevel = 0;
+  highContrast = false;
+  document.documentElement.style.fontSize = '';
+  document.documentElement.classList.remove('high-contrast');
+  document.getElementById('contrastBtn').classList.remove('on');
+  try { localStorage.removeItem('a11y_font'); localStorage.removeItem('a11y_contrast'); } catch(e) {}
+}
+
+(function initA11y() {
+  try {
+    const f = parseInt(localStorage.getItem('a11y_font') || '0');
+    if (f) { fontLevel = f; changeFontSize(0); fontLevel = f; document.documentElement.style.fontSize = [80,90,100,112,125,140][f+2]+'%'; }
+    if (localStorage.getItem('a11y_contrast') === '1') toggleContrast();
+  } catch(e) {}
+})();
 </script>
 
 </body>
