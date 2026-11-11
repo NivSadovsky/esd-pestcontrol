@@ -44,7 +44,7 @@
         ],
         "createdAt": "2026-11-11T09:37:07.852Z",
         "reason": "Agent: topbar and trust-strip have proper padding on inner containers; prod-img padding fix applied in this session"
-      },
+      }
     ]
   }
 }

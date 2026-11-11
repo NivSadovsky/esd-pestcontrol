@@ -446,6 +446,11 @@ svg { display: block; }
   position: relative; overflow: hidden;
   padding: 12px;
 }
+.prod-img img {
+  width: 100%; height: 100%;
+  object-fit: contain;
+  position: relative; z-index: 1;
+}
 .prod-img-bg {
   position: absolute; inset: 0;
   display: flex; align-items: center; justify-content: center;
@@ -984,183 +989,156 @@ footer {
       <a class="pest-tile" href="#" onclick="filterCat('מכרסמים');return false;"><em>🐭</em><strong>מכרסמים</strong><span>16 מוצרים</span></a>
       <a class="pest-tile" href="#" onclick="filterCat('יתושים');return false;"><em>🦟</em><strong>יתושים</strong><span>22 מוצרים</span></a>
       <a class="pest-tile" href="#" onclick="filterCat('זבובים');return false;"><em>🪰</em><strong>זבובים</strong><span>14 מוצרים</span></a>
+      <a class="pest-tile" href="#" onclick="filterCat('כינים');return false;"><em>🔬</em><strong>כינים</strong><span>9 מוצרים</span></a>
       <a class="pest-tile" href="#" onclick="filterCat('יונים');return false;"><em>🕊️</em><strong>יונים</strong><span>12 מוצרים</span></a>
       <a class="pest-tile" href="#" onclick="filterCat('עש');return false;"><em>🦋</em><strong>עש</strong><span>10 מוצרים</span></a>
-      <a class="pest-tile" href="#" onclick="filterCat('אורגני');return false;"><em>🌿</em><strong>אורגני</strong><span>8 מוצרים</span></a>
     </div>
   </div>
 
   <!-- Featured products -->
   <div class="section inner">
     <div class="section-head">
-      <h2>🔥 הנמכרים ביותר</h2>
-      <a class="see-all" href="#" onclick="filterCat('הכל');return false;">כל המוצרים ←</a>
+      <h2>🪰 מוצרי FlyOff — הרחקת זבובים</h2>
+      <a class="see-all" href="#" onclick="filterCat('זבובים');return false;">כל מוצרי הזבובים ←</a>
     </div>
     <div class="product-grid">
 
-      <!-- Product 1 -->
-      <div class="product-card" data-cat="נמלים">
+      <!-- 99496 FlyOff מלכודת תלייה -->
+      <div class="product-card" data-cat="זבובים">
         <div class="prod-img">
-          <div class="prod-img-bg">🐜</div>
-          🟢
+          <img src="images/products/99496.jpg" alt="פלייאוף — מלכודת זבובים תלייה" loading="lazy">
           <span class="prod-badge badge-hot">🔥 פופולרי</span>
         </div>
         <div class="prod-body">
-          <span class="prod-cat">נמלים</span>
-          <span class="prod-name">טופג'ל המקורי — פתיון ג'ל להדברת נמלים</span>
-          <span class="prod-desc">פתיון ג'ל מקצועי עם אפקט מדורג, יעיל לנמלת הבית ונמלת האש. זוג צינוריות 15 גרם.</span>
-          <div class="stars">★★★★★ <span class="review-count">(342)</span></div>
+          <span class="prod-cat">זבובים</span>
+          <span class="prod-name">פלייאוף — מלכודת זבובים תלייה</span>
+          <span class="prod-desc">מלכודת ביולוגית ללא רעלים, מכילה פיתיון ניחוח. תולים בכניסה או בחצר — יעילה מאוד בקיץ.</span>
+          <div class="stars">★★★★★ <span class="review-count">(214)</span></div>
           <div class="prod-footer">
-            <div class="prod-price">
-              <span class="price-now">95 ₪</span>
-            </div>
+            <div class="prod-price"><span class="price-now">לבירור מחיר</span></div>
             <button class="add-to-cart" onclick="addCart(this)" aria-label="הוסף לעגלה">+</button>
           </div>
         </div>
       </div>
 
-      <!-- Product 2 -->
-      <div class="product-card" data-cat="תיקנים">
+      <!-- 99497 FlyOff Bait Box -->
+      <div class="product-card" data-cat="זבובים">
         <div class="prod-img">
-          <div class="prod-img-bg">🪳</div>
-          🔵
-          <span class="prod-badge badge-sale">−18%</span>
+          <img src="images/products/99497.jpg" alt="פלייאוף — קופסת פיתיון לזבובים" loading="lazy">
         </div>
         <div class="prod-body">
-          <span class="prod-cat">תיקנים</span>
-          <span class="prod-name">טורפדו ג'ל — פתיון להדברת תיקנים</span>
-          <span class="prod-desc">ג'ל מקצועי לתיקן הגרמני ולסוגי תיקנים אחרים. יעיל גם בחדרי מזון. 15 גרם.</span>
-          <div class="stars">★★★★★ <span class="review-count">(218)</span></div>
+          <span class="prod-cat">זבובים</span>
+          <span class="prod-name">פלייאוף — קופסת פיתיון FlyOff Bait Box</span>
+          <span class="prod-desc">מלכודת קופסא עם כניסות מיוחדות לזבובים. מכילה פיתיון ביולוגי עוצמתי, מתאימה לחוץ.</span>
+          <div class="stars">★★★★☆ <span class="review-count">(98)</span></div>
           <div class="prod-footer">
-            <div class="prod-price">
-              <span class="price-now">78 ₪</span>
-              <span class="price-was">95 ₪</span>
-            </div>
+            <div class="prod-price"><span class="price-now">לבירור מחיר</span></div>
             <button class="add-to-cart" onclick="addCart(this)" aria-label="הוסף לעגלה">+</button>
           </div>
         </div>
       </div>
 
-      <!-- Product 3 -->
-      <div class="product-card" data-cat="מכרסמים">
+      <!-- 99498 FlyOff Bait -->
+      <div class="product-card" data-cat="זבובים">
         <div class="prod-img">
-          <div class="prod-img-bg">🐭</div>
-          🪤
+          <img src="images/products/99498.jpg" alt="פלייאוף — פיתיון FlyOff Bait" loading="lazy">
           <span class="prod-badge badge-new">חדש</span>
         </div>
         <div class="prod-body">
-          <span class="prod-cat">מכרסמים</span>
-          <span class="prod-name">מלכודת קפיץ לחולדה — Victor ארה"ב</span>
-          <span class="prod-desc">המלכודת הפופולרית בעולם. מתכת מגולוונת, קפיץ חזק, לשימוש חוזר. תוצרת ויקטור.</span>
-          <div class="stars">★★★★☆ <span class="review-count">(156)</span></div>
+          <span class="prod-cat">זבובים</span>
+          <span class="prod-name">פלייאוף — פיתיון FlyOff Bait</span>
+          <span class="prod-desc">פיתיון ביולוגי נוזלי מרוכז לשימוש עם מלכודות FlyOff. אריזה לטיפולים מרובים.</span>
+          <div class="stars">★★★★★ <span class="review-count">(76)</span></div>
           <div class="prod-footer">
-            <div class="prod-price">
-              <span class="price-now">29.90 ₪</span>
-            </div>
+            <div class="prod-price"><span class="price-now">לבירור מחיר</span></div>
             <button class="add-to-cart" onclick="addCart(this)" aria-label="הוסף לעגלה">+</button>
           </div>
         </div>
       </div>
 
-      <!-- Product 4 -->
-      <div class="product-card" data-cat="יונים">
-        <div class="prod-img">
-          <div class="prod-img-bg">🕊️</div>
-          🦉
-        </div>
-        <div class="prod-body">
-          <span class="prod-cat">הרחקת יונים</span>
-          <span class="prod-name">דחליל ינשוף עם ראש מסתובב</span>
-          <span class="prod-desc">דחליל תלת-ממדי עם ראש מסתובב ברוח. פוחד ומרחיק יונים ועצים בצורה הומנית.</span>
-          <div class="stars">★★★★☆ <span class="review-count">(89)</span></div>
-          <div class="prod-footer">
-            <div class="prod-price">
-              <span class="price-now">79 ₪</span>
-            </div>
-            <button class="add-to-cart" onclick="addCart(this)" aria-label="הוסף לעגלה">+</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Product 5 -->
-      <div class="product-card" data-cat="עש">
-        <div class="prod-img">
-          <div class="prod-img-bg">🦋</div>
-          🔺
-          <span class="prod-badge badge-sale">מארז חיסכון</span>
-        </div>
-        <div class="prod-body">
-          <span class="prod-cat">עש ומזיקי מזון</span>
-          <span class="prod-name">סטיקי טרפ — מלכודת פרומון לעש המזון</span>
-          <span class="prod-desc">מלכודת משולש עם פרומון משיכה עוצמתי. ללכידה ולניטור עש הקמח ועש המזון.</span>
-          <div class="stars">★★★★★ <span class="review-count">(201)</span></div>
-          <div class="prod-footer">
-            <div class="prod-price">
-              <span class="price-now">52 ₪</span>
-              <span class="price-was">60 ₪</span>
-            </div>
-            <button class="add-to-cart" onclick="addCart(this)" aria-label="הוסף לעגלה">+</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Product 6 -->
-      <div class="product-card" data-cat="ציוד">
-        <div class="prod-img">
-          <div class="prod-img-bg">🔧</div>
-          💦
-        </div>
-        <div class="prod-body">
-          <span class="prod-cat">ציוד מקצועי</span>
-          <span class="prod-name">מרסס הדברה ידני 5 ליטר — Hunter</span>
-          <span class="prod-desc">מרסס מקצועי עם לחץ אחיד וצינור גמיש. מתאים לריסוס תרסיסים, חומצות ונוזלים.</span>
-          <div class="stars">★★★★☆ <span class="review-count">(74)</span></div>
-          <div class="prod-footer">
-            <div class="prod-price">
-              <span class="price-now">79 ₪</span>
-            </div>
-            <button class="add-to-cart" onclick="addCart(this)" aria-label="הוסף לעגלה">+</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Product 7 -->
+      <!-- 99503 נוסקיטו -->
       <div class="product-card" data-cat="יתושים">
         <div class="prod-img">
-          <div class="prod-img-bg">🦟</div>
-          🌐
+          <img src="images/products/99503.jpg" alt="נוסקיטו — צמיד מרחיק יתושים 5 יח'" loading="lazy">
+          <span class="prod-badge badge-sale">מארז 5</span>
         </div>
         <div class="prod-body">
           <span class="prod-cat">יתושים</span>
-          <span class="prod-name">רשת יתושים מגנטית לחלון</span>
-          <span class="prod-desc">רשת PVC איכותית עם מגנטים לסגירה עצמית. קלה להרכבה, חיתוך לפי מידה.</span>
-          <div class="stars">★★★★★ <span class="review-count">(412)</span></div>
+          <span class="prod-name">נוסקיטו — צמיד מרחיק יתושים 5 יח'</span>
+          <span class="prod-desc">צמידי סיליקון ארומטיים עם שמנים אתריים טבעיים. ללא DEET, בטוח לילדים. מארז 5 יחידות.</span>
+          <div class="stars">★★★★★ <span class="review-count">(342)</span></div>
           <div class="prod-footer">
-            <div class="prod-price">
-              <span class="price-now">45 ₪</span>
-            </div>
+            <div class="prod-price"><span class="price-now">לבירור מחיר</span></div>
             <button class="add-to-cart" onclick="addCart(this)" aria-label="הוסף לעגלה">+</button>
           </div>
         </div>
       </div>
 
-      <!-- Product 8 -->
-      <div class="product-card" data-cat="אורגני">
+      <!-- 99500 רינגארד צמיד -->
+      <div class="product-card" data-cat="יתושים">
         <div class="prod-img">
-          <div class="prod-img-bg">🌿</div>
-          🍃
-          <span class="prod-badge badge-new">ביו</span>
+          <img src="images/products/99500.jpg" alt="רינגארד — צמיד הגנה 2 טבליות" loading="lazy">
         </div>
         <div class="prod-body">
-          <span class="prod-cat">הדברה אורגנית</span>
-          <span class="prod-name">יהלום — תרסיס אורגני לחרקים בצמחים</span>
-          <span class="prod-desc">פתרון ביולוגי לזחלים ומעופפים. בטוח לילדים ולבעלי חיים. 500 מ"ל.</span>
-          <div class="stars">★★★★☆ <span class="review-count">(98)</span></div>
+          <span class="prod-cat">יתושים</span>
+          <span class="prod-name">רינגארד — צמיד הגנה עם 2 טבליות ארומטיות</span>
+          <span class="prod-desc">צמיד פוליאסטר משולב עם מחסנית מיוחדת ו-2 טבליות ניחוח להרחקת יתושים. עיצוב אופנתי.</span>
+          <div class="stars">★★★★☆ <span class="review-count">(187)</span></div>
           <div class="prod-footer">
-            <div class="prod-price">
-              <span class="price-now">69 ₪</span>
-              <span class="price-was">79 ₪</span>
-            </div>
+            <div class="prod-price"><span class="price-now">לבירור מחיר</span></div>
+            <button class="add-to-cart" onclick="addCart(this)" aria-label="הוסף לעגלה">+</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 99501 ClipGarde -->
+      <div class="product-card" data-cat="יתושים">
+        <div class="prod-img">
+          <img src="images/products/99501.jpg" alt="קליפגארד — מחסנית ארומטית ClipGarde" loading="lazy">
+        </div>
+        <div class="prod-body">
+          <span class="prod-cat">יתושים</span>
+          <span class="prod-name">קליפגארד — מחסנית ארומטית ClipGarde</span>
+          <span class="prod-desc">מחסנית חלופית לצמיד רינגארד. מכילה תמצית שמן ציפורן וגרניום טבעיים.</span>
+          <div class="stars">★★★★☆ <span class="review-count">(134)</span></div>
+          <div class="prod-footer">
+            <div class="prod-price"><span class="price-now">לבירור מחיר</span></div>
+            <button class="add-to-cart" onclick="addCart(this)" aria-label="הוסף לעגלה">+</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 99502 רינגארד טבליות -->
+      <div class="product-card" data-cat="יתושים">
+        <div class="prod-img">
+          <img src="images/products/99502.jpg" alt="רינגארד — טבליות חלופיות RinGard" loading="lazy">
+          <span class="prod-badge badge-sale">מארז חיסכון</span>
+        </div>
+        <div class="prod-body">
+          <span class="prod-cat">יתושים</span>
+          <span class="prod-name">רינגארד — טבליות ניחוח חלופיות</span>
+          <span class="prod-desc">סט טבליות ניחוח ארומטיות חלופיות לצמיד רינגארד. ריח נעים לאדם, מרחיק יתושים.</span>
+          <div class="stars">★★★★★ <span class="review-count">(91)</span></div>
+          <div class="prod-footer">
+            <div class="prod-price"><span class="price-now">לבירור מחיר</span></div>
+            <button class="add-to-cart" onclick="addCart(this)" aria-label="הוסף לעגלה">+</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 99505 אנטימאוס 10 יח' -->
+      <div class="product-card" data-cat="מכרסמים">
+        <div class="prod-img">
+          <img src="images/products/99505.jpg" alt="אנטימאוס — שקיות הרחקת עכברים 10 יח'" loading="lazy">
+          <span class="prod-badge badge-hot">🔥 פופולרי</span>
+        </div>
+        <div class="prod-body">
+          <span class="prod-cat">מכרסמים</span>
+          <span class="prod-name">אנטימאוס — שקיות הרחקה ארומטית 10 יח'</span>
+          <span class="prod-desc">שקיות ארומטיות להרחקת עכברים ללא רעלים. מכילות שמנים אתריים טבעיים. מארז 10 יחידות.</span>
+          <div class="stars">★★★★★ <span class="review-count">(278)</span></div>
+          <div class="prod-footer">
+            <div class="prod-price"><span class="price-now">לבירור מחיר</span></div>
             <button class="add-to-cart" onclick="addCart(this)" aria-label="הוסף לעגלה">+</button>
           </div>
         </div>
@@ -1180,80 +1158,131 @@ footer {
     </div>
   </div>
 
-  <!-- Second row: מכרסמים + יונים -->
+  <!-- Second row: מכרסמים + כינים -->
   <div class="section inner">
     <div class="section-head">
-      <h2>🕊️ הרחקת יונים ומכרסמים</h2>
-      <a class="see-all" href="#" onclick="filterCat('יונים');return false;">ראה הכל ←</a>
+      <h2>🔬 מוצרי NoLice וקיירליס — הגנה מכינים</h2>
+      <a class="see-all" href="#" onclick="filterCat('כינים');return false;">כל מוצרי הכינים ←</a>
     </div>
     <div class="product-grid">
 
-      <div class="product-card" data-cat="יונים">
+      <!-- 99507 אנטימאוס 5 יח' -->
+      <div class="product-card" data-cat="מכרסמים">
         <div class="prod-img">
-          <div class="prod-img-bg">🕊️</div>
-          📌
+          <img src="images/products/99507.jpg" alt="אנטימאוס — שקיות הרחקה 5 יח'" loading="lazy">
         </div>
         <div class="prod-body">
-          <span class="prod-cat">הרחקת יונים</span>
-          <span class="prod-name">דוקרנים להרחקת יונים — ארגז 10 יח'</span>
-          <span class="prod-desc">דוקרנים מפוליקרבונט, בסיס רחב 11 ס"מ, מחוזק לאורך שנים. מונע נחיתה על אדנים ומרפסות.</span>
-          <div class="stars">★★★★★ <span class="review-count">(187)</span></div>
+          <span class="prod-cat">מכרסמים</span>
+          <span class="prod-name">אנטימאוס — שקיות הרחקה ארומטית 5 יח'</span>
+          <span class="prod-desc">שקיות ארומטיות להרחקת עכברים ללא רעלים. ריח ניחוח לאדם, מרתיע מכרסמים. מארז 5 יחידות.</span>
+          <div class="stars">★★★★☆ <span class="review-count">(142)</span></div>
           <div class="prod-footer">
-            <div class="prod-price"><span class="price-now">120 ₪</span></div>
+            <div class="prod-price"><span class="price-now">לבירור מחיר</span></div>
             <button class="add-to-cart" onclick="addCart(this)" aria-label="הוסף לעגלה">+</button>
           </div>
         </div>
       </div>
 
-      <div class="product-card" data-cat="יונים">
+      <!-- 99512 נוליס 2 יח' -->
+      <div class="product-card" data-cat="כינים">
         <div class="prod-img">
-          <div class="prod-img-bg">🕊️</div>
-          🕸️
+          <img src="images/products/99512.jpg" alt="נוליס — גומיות שיער נגד כינים 2 יח'" loading="lazy">
+          <span class="prod-badge badge-new">חדש</span>
         </div>
         <div class="prod-body">
-          <span class="prod-cat">הרחקת יונים</span>
-          <span class="prod-name">רשת יונים מקצועית שקופה 5×5 מ'</span>
-          <span class="prod-desc">רשת פוליאתילן שקופה עם חורים 5×5 מ"מ. הפתרון הכי יעיל לחסימת פירים ומרפסות.</span>
+          <span class="prod-cat">כינים</span>
+          <span class="prod-name">נוליס — גומיות שיער נגד כינים 2 יח'</span>
+          <span class="prod-desc">גומיות שיער ספוגות שמנים אתריים טבעיים המרחיקים כינים. בטוח לשימוש יומיומי בילדים.</span>
+          <div class="stars">★★★★★ <span class="review-count">(412)</span></div>
+          <div class="prod-footer">
+            <div class="prod-price"><span class="price-now">לבירור מחיר</span></div>
+            <button class="add-to-cart" onclick="addCart(this)" aria-label="הוסף לעגלה">+</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 99513 נוליס גומיות 6 יח' -->
+      <div class="product-card" data-cat="כינים">
+        <div class="prod-img">
+          <img src="images/products/99513.jpg" alt="נוליס — גומיות שיער 6 יח'" loading="lazy">
+          <span class="prod-badge badge-sale">מארז חיסכון</span>
+        </div>
+        <div class="prod-body">
+          <span class="prod-cat">כינים</span>
+          <span class="prod-name">נוליס — גומיות שיער נגד כינים 6 יח'</span>
+          <span class="prod-desc">מארז 6 גומיות שיער ספוגות שמנים אתריים. עיצובים צבעוניים לילדות, הגנה כל היום.</span>
+          <div class="stars">★★★★★ <span class="review-count">(298)</span></div>
+          <div class="prod-footer">
+            <div class="prod-price"><span class="price-now">לבירור מחיר</span></div>
+            <button class="add-to-cart" onclick="addCart(this)" aria-label="הוסף לעגלה">+</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 99560 נוליס בנות שחור -->
+      <div class="product-card" data-cat="כינים">
+        <div class="prod-img">
+          <img src="images/products/99560.jpg" alt="נוליס — גומיות שחורות לבנות 6 יח'" loading="lazy">
+        </div>
+        <div class="prod-body">
+          <span class="prod-cat">כינים</span>
+          <span class="prod-name">נוליס — גומיות שחורות לבנות NoLice Girls Black 6 יח'</span>
+          <span class="prod-desc">גומיות שיער שחורות אלגנטיות עם הגנה ארומטית מכינים. מתאימות לבנות בכל גיל.</span>
+          <div class="stars">★★★★☆ <span class="review-count">(187)</span></div>
+          <div class="prod-footer">
+            <div class="prod-price"><span class="price-now">לבירור מחיר</span></div>
+            <button class="add-to-cart" onclick="addCart(this)" aria-label="הוסף לעגלה">+</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 99559 קיירליס -->
+      <div class="product-card" data-cat="כינים">
+        <div class="prod-img">
+          <img src="images/products/99559.jpg" alt="קיירליס — גומיות לאיסוף שיער נגד כינים 6 יח'" loading="lazy">
+          <span class="prod-badge badge-hot">🔥 פופולרי</span>
+        </div>
+        <div class="prod-body">
+          <span class="prod-cat">כינים</span>
+          <span class="prod-name">קיירליס CareLice — גומיות נגד כינים 6 יח'</span>
+          <span class="prod-desc">גומיות לאיסוף השיער להרחקה ומניעת כינים. הורן מבוסס על תמצית צמחית טבעית. 6 יחידות.</span>
+          <div class="stars">★★★★★ <span class="review-count">(356)</span></div>
+          <div class="prod-footer">
+            <div class="prod-price"><span class="price-now">לבירור מחיר</span></div>
+            <button class="add-to-cart" onclick="addCart(this)" aria-label="הוסף לעגלה">+</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 99561 קיירליס ורוד -->
+      <div class="product-card" data-cat="כינים">
+        <div class="prod-img">
+          <img src="images/products/99561.jpg" alt="קיירליס — גומיות שיער ורוד 6 יח'" loading="lazy">
+        </div>
+        <div class="prod-body">
+          <span class="prod-cat">כינים</span>
+          <span class="prod-name">קיירליס CareLice — גומיות ורוד 6 יח'</span>
+          <span class="prod-desc">גומיות שיער בגווני ורוד עם הגנה מכינים. פתרון אופנתי ויעיל לילדות בגיל בית ספר.</span>
           <div class="stars">★★★★☆ <span class="review-count">(134)</span></div>
           <div class="prod-footer">
-            <div class="prod-price"><span class="price-now">90 ₪</span></div>
+            <div class="prod-price"><span class="price-now">לבירור מחיר</span></div>
             <button class="add-to-cart" onclick="addCart(this)" aria-label="הוסף לעגלה">+</button>
           </div>
         </div>
       </div>
 
-      <div class="product-card" data-cat="מכרסמים">
+      <!-- 99562 קיירליס כחול -->
+      <div class="product-card" data-cat="כינים">
         <div class="prod-img">
-          <div class="prod-img-bg">🐭</div>
-          🏠
+          <img src="images/products/99562.jpg" alt="קיירליס — גומיות כחול 6 יח'" loading="lazy">
         </div>
         <div class="prod-body">
-          <span class="prod-cat">מכרסמים</span>
-          <span class="prod-name">מלכודת נדנדה הומנית — Tip Trap</span>
-          <span class="prod-desc">מלכודת ידידותית לחיה, ללכידה ושחרור. פלסטיק חזק, שקוף. מתאים לעכברים ולחלדונים.</span>
-          <div class="stars">★★★★☆ <span class="review-count">(91)</span></div>
+          <span class="prod-cat">כינים</span>
+          <span class="prod-name">קיירליס CareLice — גומיות כחול 6 יח'</span>
+          <span class="prod-desc">גומיות שיער בגווני כחול עם הגנה מכינים. מתאימות גם לבנים. עם שמנים אתריים טבעיים.</span>
+          <div class="stars">★★★★☆ <span class="review-count">(98)</span></div>
           <div class="prod-footer">
-            <div class="prod-price"><span class="price-now">27.90 ₪</span></div>
-            <button class="add-to-cart" onclick="addCart(this)" aria-label="הוסף לעגלה">+</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="product-card" data-cat="מכרסמים">
-        <div class="prod-img">
-          <div class="prod-img-bg">🐭</div>
-          ⚡
-        </div>
-        <div class="prod-body">
-          <span class="prod-cat">מכרסמים</span>
-          <span class="prod-name">מלכודת קפיץ לחולדה — מארז 12 יח'</span>
-          <span class="prod-desc">12 מלכודות ויקטור המקוריות. חיסכון של 12% לעומת רכישה בודדת. למסעדות ומרכזי הפצה.</span>
-          <div class="stars">★★★★★ <span class="review-count">(63)</span></div>
-          <div class="prod-footer">
-            <div class="prod-price">
-              <span class="price-now">295 ₪</span>
-              <span class="price-was">335 ₪</span>
-            </div>
+            <div class="prod-price"><span class="price-now">לבירור מחיר</span></div>
             <button class="add-to-cart" onclick="addCart(this)" aria-label="הוסף לעגלה">+</button>
           </div>
         </div>
@@ -1287,14 +1316,14 @@ footer {
     <div class="footer-col">
       <h4>קטגוריות</h4>
       <ul>
+        <li><a href="#" onclick="filterCat('זבובים');return false;">זבובים — FlyOff</a></li>
+        <li><a href="#" onclick="filterCat('יתושים');return false;">יתושים — RinGard/Noskito</a></li>
+        <li><a href="#" onclick="filterCat('כינים');return false;">כינים — NoLice/CareLice</a></li>
+        <li><a href="#" onclick="filterCat('מכרסמים');return false;">מכרסמים — AntiMouse</a></li>
         <li><a href="#" onclick="filterCat('נמלים');return false;">נמלים</a></li>
         <li><a href="#" onclick="filterCat('תיקנים');return false;">תיקנים וג'וקים</a></li>
-        <li><a href="#" onclick="filterCat('מכרסמים');return false;">מכרסמים</a></li>
-        <li><a href="#" onclick="filterCat('יתושים');return false;">יתושים</a></li>
         <li><a href="#" onclick="filterCat('יונים');return false;">הרחקת יונים</a></li>
         <li><a href="#" onclick="filterCat('עש');return false;">עש ומזיקי מזון</a></li>
-        <li><a href="#" onclick="filterCat('אורגני');return false;">הדברה אורגנית</a></li>
-        <li><a href="#" onclick="filterCat('ציוד');return false;">ציוד מקצועי</a></li>
       </ul>
     </div>
 
