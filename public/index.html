@@ -86,6 +86,17 @@ body {
 svg { display: block; }
 
 /* ---- Topbar ---- */
+.dev-banner {
+  background: #92400E;
+  color: #FEF3C7;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-align: center;
+  padding: 10px max(20px, env(safe-area-inset-left, 0px));
+  letter-spacing: 0.02em;
+  line-height: 1.5;
+}
+.dev-banner strong { color: #FDE68A; }
 .topbar {
   background: var(--accent-btn);
   color: #fff;
@@ -764,8 +775,34 @@ footer {
   text-decoration: none; transition: color 0.15s;
 }
 .footer-col a:hover { color: var(--accent-2); }
+.footer-legal {
+  border-top: 1px solid var(--border);
+  margin-top: 32px;
+  padding: 24px max(20px, env(safe-area-inset-left, 0px)) 0;
+}
+.footer-legal-grid {
+  max-width: 1200px; margin-inline: auto;
+  display: grid; grid-template-columns: 1fr 2fr; gap: 32px;
+}
+.footer-legal-block h5 {
+  font-size: 0.8rem; font-weight: 800; letter-spacing: 0.05em;
+  text-transform: uppercase; color: var(--fg-muted);
+  margin: 0 0 10px;
+}
+.footer-legal-block p {
+  font-size: 0.78rem; line-height: 1.7; color: var(--fg-muted);
+  margin: 0 0 8px;
+}
+.placeholder {
+  background: rgba(146,64,14,0.15); color: #92400E;
+  border-radius: 3px; padding: 1px 5px;
+  font-style: italic; font-weight: 600;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .placeholder { background: rgba(253,230,138,0.15); color: #FDE68A; } }
+:root[data-theme="dark"] .placeholder { background: rgba(253,230,138,0.15); color: #FDE68A; }
+@media (max-width: 700px) { .footer-legal-grid { grid-template-columns: 1fr; } }
 .footer-bottom {
-  margin-top: 32px; padding-top: 20px;
+  margin-top: 20px; padding-top: 20px;
   border-top: 1px solid var(--border);
   display: flex; align-items: center;
   justify-content: space-between; flex-wrap: wrap; gap: 10px;
@@ -818,6 +855,10 @@ footer {
 </head>
 <body>
 <!-- ===================== TOPBAR ===================== -->
+<div class="dev-banner" role="banner" aria-label="הודעת מצב אתר">
+  🚧 <strong>אתר בשלבי הקמה — טרם נפתח לרכישה.</strong> המוצרים והמחירים אינם סופיים. לפניות: צרו קשר בוואצאפ.
+</div>
+
 <div class="topbar">
   <span class="topbar-item">🚚 משלוח חינם מעל 100 ₪</span>
   <span class="topbar-sep">|</span>
@@ -1346,9 +1387,46 @@ footer {
         <li><a href="#">הפוך למפיץ</a></li>
         <li><a href="#">תקנון החנות</a></li>
         <li><a href="#">מדיניות פרטיות</a></li>
-        <li><a href="#">הצהרת נגישות</a></li>
+        <li><a href="#accessibility-statement">הצהרת נגישות</a></li>
         <li><a href="#">מפת האתר</a></li>
       </ul>
+    </div>
+  </div>
+
+  <!-- פרטי עוסק + הצהרת נגישות -->
+  <div class="footer-legal">
+    <div class="footer-legal-grid">
+
+      <div class="footer-legal-block">
+        <h5>פרטי העוסק</h5>
+        <p>
+          <strong>א.ש.ד. הדברה</strong><br>
+          ע.מ. / ח.פ.: <mark class="placeholder">[מספר ע.מ. / ח.פ.]</mark><br>
+          כתובת: <mark class="placeholder">[כתובת העסק]</mark><br>
+          טלפון: <mark class="placeholder">[מספר טלפון]</mark><br>
+          דוא"ל: <mark class="placeholder">[כתובת מייל]</mark>
+        </p>
+      </div>
+
+      <div class="footer-legal-block" id="accessibility-statement">
+        <h5>הצהרת נגישות</h5>
+        <p>
+          א.ש.ד. הדברה שואפת להנגיש את אתר האינטרנט שלה לאנשים עם מוגבלויות,
+          בהתאם לתקנות שוויון זכויות לאנשים עם מוגבלות (התאמות נגישות לשירות)
+          התשע"ג–2013 ולתקן ישראלי 5568.
+        </p>
+        <p>
+          האתר עומד ברמת התאמה <strong>AA</strong> של תקן
+          <abbr title="Web Content Accessibility Guidelines">WCAG</abbr> 2.1.<br>
+          הבדיקה האחרונה בוצעה: <strong>נובמבר 2025</strong>.
+        </p>
+        <p>
+          נתקלתם בבעיית נגישות? נשמח לעזור:<br>
+          טלפון: <mark class="placeholder">[מספר טלפון]</mark> |
+          דוא"ל: <mark class="placeholder">[כתובת מייל]</mark>
+        </p>
+      </div>
+
     </div>
   </div>
 
