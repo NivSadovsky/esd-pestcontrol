@@ -1895,6 +1895,13 @@ footer {
 </div>
 
 <script>
+/* ---- XSS escape helper ---- */
+function esc(s) {
+  return String(s)
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+}
+
 /* ---- Cart ---- */
 let cartItems = [];
 
@@ -1922,8 +1929,8 @@ function renderCart() {
   body.innerHTML = cartItems.map((item, idx) => `
     <div class="cart-item">
       <div class="cart-item-info">
-        <span class="cart-item-name">${item.name}</span>
-        <span class="cart-item-cat">${item.cat}</span>
+        <span class="cart-item-name">${esc(item.name)}</span>
+        <span class="cart-item-cat">${esc(item.cat)}</span>
       </div>
       <div class="cart-item-qty">
         <button onclick="changeQty(${idx},-1)" aria-label="פחות">−</button>
@@ -1997,7 +2004,10 @@ function appendMsg(text, isUser) {
   const d = document.createElement('div');
   d.className = 'msg ' + (isUser ? 'msg-u' : 'msg-b');
   const now = new Date().toLocaleTimeString('he-IL', {hour:'2-digit',minute:'2-digit'});
-  d.innerHTML = `<div class="msg-bub">${text.replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>').replace(/\n/g,'<br>')}</div><span class="msg-ts">${now}</span>`;
+  const safeText = isUser
+    ? esc(text)
+    : text.replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>').replace(/\n/g,'<br>');
+  d.innerHTML = `<div class="msg-bub">${safeText}</div><span class="msg-ts">${now}</span>`;
   msgs.appendChild(d);
   msgs.scrollTop = msgs.scrollHeight;
 }
