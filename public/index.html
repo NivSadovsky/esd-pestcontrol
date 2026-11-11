@@ -943,16 +943,16 @@ footer {
 <!-- ===================== CATEGORY NAV ===================== -->
 <nav class="cat-nav">
   <div class="cat-nav-scroll">
-    <a class="cat-link on" href="#" data-filter="הכל">🏠 הכל</a>
-    <a class="cat-link" href="#" data-filter="נמלים">🐜 נמלים</a>
-    <a class="cat-link" href="#" data-filter="תיקנים">🪳 תיקנים</a>
-    <a class="cat-link" href="#" data-filter="מכרסמים">🐭 מכרסמים</a>
-    <a class="cat-link" href="#" data-filter="יתושים">🦟 יתושים</a>
-    <a class="cat-link" href="#" data-filter="זבובים">🪰 זבובים</a>
-    <a class="cat-link" href="#" data-filter="יונים">🕊️ יונים</a>
-    <a class="cat-link" href="#" data-filter="עש">🦋 עש ומזיקי מזון</a>
-    <a class="cat-link" href="#" data-filter="אורגני">🌿 הדברה אורגנית</a>
-    <a class="cat-link" href="#" data-filter="ציוד">🔧 ציוד מקצועי</a>
+    <a class="cat-link on" href="#" data-filter="הכל" onclick="filterCat('הכל');return false;">🏠 הכל</a>
+    <a class="cat-link" href="#" data-filter="נמלים" onclick="filterCat('נמלים');return false;">🐜 נמלים</a>
+    <a class="cat-link" href="#" data-filter="תיקנים" onclick="filterCat('תיקנים');return false;">🪳 תיקנים</a>
+    <a class="cat-link" href="#" data-filter="מכרסמים" onclick="filterCat('מכרסמים');return false;">🐭 מכרסמים</a>
+    <a class="cat-link" href="#" data-filter="יתושים" onclick="filterCat('יתושים');return false;">🦟 יתושים</a>
+    <a class="cat-link" href="#" data-filter="זבובים" onclick="filterCat('זבובים');return false;">🪰 זבובים</a>
+    <a class="cat-link" href="#" data-filter="כינים" onclick="filterCat('כינים');return false;">🔬 כינים</a>
+    <a class="cat-link" href="#" data-filter="עש" onclick="filterCat('עש');return false;">🦋 עש</a>
+    <a class="cat-link" href="#" data-filter="חלזונות" onclick="filterCat('חלזונות');return false;">🐌 חלזונות</a>
+    <a class="cat-link" href="#" data-filter="נחשים" onclick="filterCat('נחשים');return false;">🐍 נחשים</a>
   </div>
 </nav>
 
@@ -1883,7 +1883,11 @@ function filterCat(cat) {
 
   // Scroll to products section
   const productsSection = document.querySelector('main .section');
-  if (productsSection) productsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  if (productsSection) {
+    const headerH = document.querySelector('header')?.offsetHeight || 0;
+    const top = productsSection.getBoundingClientRect().top + window.scrollY - headerH - 12;
+    window.scrollTo({ top, behavior: 'smooth' });
+  }
 }
 </script>
 
