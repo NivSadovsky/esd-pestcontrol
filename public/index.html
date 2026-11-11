@@ -633,6 +633,9 @@ svg { display: block; }
   box-shadow: 0 4px 20px var(--shadow);
   display: flex; flex-direction: column; gap: 8px; min-width: 160px;
 }
+.a11y-panel-hdr { display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; }
+.a11y-x-btn { background: none; border: none; cursor: pointer; color: var(--fg-muted); font-size: 1rem; padding: 2px 4px; border-radius: 4px; }
+.a11y-x-btn:hover { background: var(--surface); color: var(--fg); }
 .a11y-label { font-size: 0.75rem; color: var(--fg-muted); font-weight: 600; }
 .a11y-sep { height: 1px; background: var(--border); }
 .a11y-btn {
@@ -1825,6 +1828,10 @@ footer {
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="1.5"/><path d="M12 7v4M8 9l4 2 4-2M10 15l-2 5M14 15l2 5"/><path d="M9 12l-2 2 1 1M15 12l2 2-1 1"/></svg>
   </button>
   <div class="a11y-panel" id="a11yPanel" hidden>
+    <div class="a11y-panel-hdr">
+      <span style="font-size:0.8rem;font-weight:700;color:var(--fg)">נגישות</span>
+      <button class="a11y-x-btn" onclick="toggleA11y()" aria-label="סגור">✕</button>
+    </div>
     <span class="a11y-label">גודל גופן</span>
     <button class="a11y-btn" onclick="changeFontSize(-1)" aria-label="הקטן גופן">א-</button>
     <button class="a11y-btn" onclick="changeFontSize(0)" aria-label="גופן רגיל">א</button>
@@ -1833,9 +1840,7 @@ footer {
     <span class="a11y-label">ניגודיות</span>
     <button class="a11y-btn" id="contrastBtn" onclick="toggleContrast()" aria-label="ניגודיות גבוהה">◑</button>
     <div class="a11y-sep"></div>
-    <button class="a11y-btn" onclick="resetA11y()" aria-label="אפס הגדרות">↺</button>
-    <div class="a11y-sep"></div>
-    <button class="a11y-btn a11y-close-btn" onclick="toggleA11y()" aria-label="סגור">✕ סגור</button>
+    <button class="a11y-btn" onclick="resetA11y()" aria-label="אפס הגדרות">↺ אפס</button>
   </div>
 </div>
 
