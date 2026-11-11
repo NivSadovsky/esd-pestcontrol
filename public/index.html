@@ -1,0 +1,1462 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>א.ש.ד. הדברה</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;900&family=Rubik:wght@400;500;700;900&display=swap">
+
+<style>
+/* ===================================================
+   א.ש.ד. הדברה — Design tokens
+   RTL store: forest green accent, clean white ground
+   =================================================== */
+:root {
+  --bg:         #FFFFFF;
+  --bg-sub:     #F4F8F5;
+  --surface:    #E8F2EB;
+  --fg:         #192B1E;
+  --fg-muted:   #597060;
+  --accent:     #1E6B3A;
+  --accent-2:   #2F9254;
+  --cta:        #22C55E;
+  --cta-hover:  #16A34A;
+  --danger:     #DC2626;
+  --border:     #D3E8DA;
+  --shadow:     rgba(30,107,58,0.10);
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg:         #0C1810;
+    --bg-sub:     #121F15;
+    --surface:    #1A2E1E;
+    --fg:         #E2F0E6;
+    --fg-muted:   #7DA886;
+    --accent:     #2F9254;
+    --accent-2:   #3DB568;
+    --cta:        #22C55E;
+    --cta-hover:  #16A34A;
+    --danger:     #F87171;
+    --border:     #263B2C;
+    --shadow:     rgba(0,0,0,0.45);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg:         #0C1810;
+  --bg-sub:     #121F15;
+  --surface:    #1A2E1E;
+  --fg:         #E2F0E6;
+  --fg-muted:   #7DA886;
+  --accent:     #2F9254;
+  --accent-2:   #3DB568;
+  --cta:        #22C55E;
+  --cta-hover:  #16A34A;
+  --danger:     #F87171;
+  --border:     #263B2C;
+  --shadow:     rgba(0,0,0,0.45);
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  direction: rtl;
+  font-family: 'Heebo', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--fg);
+  line-height: 1.6;
+}
+
+/* ---- Helpers ---- */
+.inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-inline: max(20px, env(safe-area-inset-left, 0px));
+}
+
+svg { display: block; }
+
+/* ---- Topbar ---- */
+.topbar {
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 8px max(20px, env(safe-area-inset-left, 0px));
+  flex-wrap: wrap;
+}
+.topbar-item { display: flex; align-items: center; gap: 5px; }
+.topbar-sep { opacity: 0.4; }
+
+/* ---- Header ---- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 2px 16px var(--shadow);
+}
+.header-inner {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding-block: 10px;
+  padding-inline: max(20px, env(safe-area-inset-left, 0px));
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.logo { display: flex; align-items: center; gap: 10px; text-decoration: none; flex-shrink: 0; }
+.logo-mark {
+  width: 44px; height: 44px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  border-radius: 11px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.3rem;
+  box-shadow: 0 3px 10px var(--shadow);
+  flex-shrink: 0;
+}
+.logo-words { display: flex; flex-direction: column; line-height: 1.15; }
+.logo-words strong {
+  font-family: 'Rubik', sans-serif;
+  font-weight: 800;
+  font-size: 1.08rem;
+  color: var(--fg);
+}
+.logo-words span { font-size: 0.68rem; color: var(--fg-muted); letter-spacing: 0.05em; }
+
+.search-bar {
+  flex: 1;
+  max-width: 500px;
+  margin: 0 auto;
+  position: relative;
+}
+.search-bar input {
+  width: 100%;
+  padding: 9px 42px 9px 14px;
+  border: 1.5px solid var(--border);
+  border-radius: 25px;
+  background: var(--bg-sub);
+  color: var(--fg);
+  font-family: 'Heebo', sans-serif;
+  font-size: 0.88rem;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.search-bar input::placeholder { color: var(--fg-muted); }
+.search-bar input:focus {
+  border-color: var(--accent-2);
+  box-shadow: 0 0 0 3px rgba(47,146,84,0.15);
+}
+.search-bar button {
+  position: absolute; left: 12px; top: 50%; transform: translateY(-50%);
+  background: none; border: none; color: var(--fg-muted); cursor: pointer;
+  display: flex; align-items: center;
+}
+
+.hdr-actions { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
+.icon-btn {
+  width: 40px; height: 40px;
+  border: none; background: none; cursor: pointer; color: var(--fg);
+  border-radius: 9px; display: flex; align-items: center; justify-content: center;
+  transition: background 0.15s; position: relative; font-size: 1.1rem;
+}
+.icon-btn:hover { background: var(--surface); }
+.icon-btn .dot {
+  position: absolute; top: 6px; right: 6px;
+  width: 8px; height: 8px; background: var(--cta); border-radius: 50%;
+  border: 1.5px solid var(--bg);
+}
+.cart-wrap {
+  position: relative;
+}
+.cart-count {
+  position: absolute; top: 0; right: 0;
+  background: var(--danger); color: #fff;
+  font-size: 0.6rem; font-weight: 800;
+  min-width: 16px; height: 16px;
+  border-radius: 8px; display: flex; align-items: center; justify-content: center;
+  border: 1.5px solid var(--bg);
+  font-variant-numeric: tabular-nums;
+}
+.btn-whatsapp {
+  background: #25D366; color: #fff;
+  border: none; border-radius: 22px;
+  padding: 8px 18px 8px 14px;
+  font-size: 0.8rem; font-weight: 700;
+  font-family: 'Heebo', sans-serif;
+  cursor: pointer; display: flex; align-items: center; gap: 6px;
+  transition: filter 0.2s;
+}
+.btn-whatsapp:hover { filter: brightness(1.08); }
+
+/* ---- Cat-nav ---- */
+.cat-nav {
+  background: var(--bg);
+  border-bottom: 1.5px solid var(--border);
+}
+.cat-nav-scroll {
+  display: flex; gap: 2px;
+  overflow-x: auto; scrollbar-width: none;
+  max-width: 1200px; margin: 0 auto;
+  padding-inline: max(20px, env(safe-area-inset-left, 0px));
+}
+.cat-nav-scroll::-webkit-scrollbar { display: none; }
+.cat-link {
+  display: flex; align-items: center; gap: 5px;
+  padding: 10px 14px; white-space: nowrap;
+  font-size: 0.83rem; font-weight: 500;
+  color: var(--fg-muted); text-decoration: none;
+  border-bottom: 2.5px solid transparent;
+  transition: color 0.15s, border-color 0.15s;
+}
+.cat-link:hover, .cat-link.on { color: var(--accent); border-bottom-color: var(--accent); }
+
+/* ---- Hero ---- */
+.hero {
+  background: linear-gradient(140deg, #0F4A26 0%, #1E6B3A 50%, #236B41 100%);
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+  padding: 54px 0 50px;
+}
+.hero::before {
+  content: "";
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse at 15% 60%, rgba(255,255,255,0.06) 0%, transparent 55%),
+    radial-gradient(ellipse at 85% 10%, rgba(255,255,255,0.04) 0%, transparent 40%);
+  pointer-events: none;
+}
+/* Decorative dots grid */
+.hero::after {
+  content: "";
+  position: absolute; inset: 0;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.08) 1px, transparent 1px);
+  background-size: 28px 28px;
+  pointer-events: none;
+}
+.hero-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+  position: relative; z-index: 1;
+  padding-inline: max(20px, env(safe-area-inset-left, 0px));
+  max-width: 1200px; margin: 0 auto;
+}
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 7px;
+  background: rgba(255,255,255,0.14); backdrop-filter: blur(4px);
+  border: 1px solid rgba(255,255,255,0.22);
+  border-radius: 22px; padding: 5px 15px;
+  font-size: 0.77rem; font-weight: 700; letter-spacing: 0.05em;
+  margin-bottom: 14px;
+}
+.hero h1 {
+  font-family: 'Rubik', sans-serif;
+  font-weight: 900;
+  font-size: clamp(2rem, 4.5vw, 3rem);
+  line-height: 1.12;
+  text-wrap: balance;
+  margin-bottom: 14px;
+}
+.hero h1 em { font-style: normal; color: #6EE892; }
+.hero-sub {
+  font-size: 0.98rem; opacity: 0.85;
+  line-height: 1.65; max-width: 400px;
+  margin-bottom: 28px;
+}
+.hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.btn-hero {
+  background: var(--cta); color: #fff;
+  border: none; border-radius: 11px;
+  padding: 12px 28px;
+  font-size: 0.98rem; font-weight: 800;
+  font-family: 'Heebo', sans-serif;
+  cursor: pointer; display: inline-flex; align-items: center; gap: 8px;
+  transition: background 0.2s, transform 0.1s; text-decoration: none;
+}
+.btn-hero:hover { background: var(--cta-hover); transform: translateY(-1px); }
+.btn-hero-ghost {
+  background: rgba(255,255,255,0.12); color: #fff;
+  border: 1.5px solid rgba(255,255,255,0.35);
+  border-radius: 11px; padding: 11px 22px;
+  font-size: 0.98rem; font-weight: 600;
+  font-family: 'Heebo', sans-serif;
+  cursor: pointer; display: inline-flex; align-items: center; gap: 8px;
+  transition: background 0.2s; text-decoration: none;
+}
+.btn-hero-ghost:hover { background: rgba(255,255,255,0.2); }
+.hero-stats {
+  display: flex; gap: 28px; margin-top: 32px;
+  padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.15);
+}
+.stat-num {
+  font-family: 'Rubik', sans-serif;
+  font-weight: 900; font-size: 1.55rem;
+  color: #6EE892; font-variant-numeric: tabular-nums;
+  display: block;
+}
+.stat-lbl { font-size: 0.72rem; opacity: 0.72; }
+
+/* Hero right: pest grid */
+.pest-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+.pest-card {
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 14px;
+  padding: 18px 10px 14px;
+  text-align: center;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+  text-decoration: none; color: #fff;
+}
+.pest-card:hover {
+  background: rgba(255,255,255,0.18);
+  transform: translateY(-2px);
+}
+.pest-card em { font-style: normal; font-size: 2rem; display: block; margin-bottom: 6px; }
+.pest-card strong { display: block; font-size: 0.8rem; font-weight: 700; }
+.pest-card span { font-size: 0.65rem; opacity: 0.7; }
+
+/* ---- Trust strip ---- */
+.trust-strip {
+  background: var(--bg-sub);
+  border-bottom: 1px solid var(--border);
+}
+.trust-inner {
+  display: flex; flex-wrap: wrap;
+  max-width: 1200px; margin: 0 auto;
+  padding-inline: max(20px, env(safe-area-inset-left, 0px));
+}
+.trust-item {
+  flex: 1 1 200px;
+  display: flex; align-items: center; gap: 10px;
+  padding: 14px 16px;
+  border-inline-end: 1px solid var(--border);
+  min-width: 0;
+}
+.trust-item:last-child { border-inline-end: none; }
+.trust-icon {
+  width: 38px; height: 38px; flex-shrink: 0;
+  background: var(--accent); color: #fff;
+  border-radius: 9px; display: flex; align-items: center; justify-content: center;
+  font-size: 1.05rem;
+}
+.trust-txt strong { display: block; font-size: 0.83rem; font-weight: 700; }
+.trust-txt span { font-size: 0.72rem; color: var(--fg-muted); }
+
+/* ---- Section ---- */
+.section { padding: 48px 0; }
+.section-head {
+  display: flex; align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 22px;
+}
+.section-head h2 {
+  font-family: 'Rubik', sans-serif;
+  font-weight: 800; font-size: 1.45rem;
+  text-wrap: balance;
+}
+.section-head h2 small {
+  font-family: 'Heebo', sans-serif;
+  font-weight: 400; font-size: 0.8rem;
+  color: var(--fg-muted); margin-right: 8px;
+}
+.see-all {
+  font-size: 0.83rem; font-weight: 600;
+  color: var(--accent-2); text-decoration: none;
+  display: flex; align-items: center; gap: 3px;
+  flex-shrink: 0;
+}
+.see-all:hover { text-decoration: underline; }
+
+/* ---- Pest tiles ---- */
+.pest-tiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 10px;
+}
+.pest-tile {
+  background: var(--bg-sub);
+  border: 1.5px solid var(--border);
+  border-radius: 14px;
+  padding: 20px 10px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  transition: all 0.2s;
+}
+.pest-tile:hover {
+  border-color: var(--accent-2);
+  background: var(--surface);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px var(--shadow);
+}
+.pest-tile em { font-style: normal; font-size: 2.2rem; display: block; margin-bottom: 8px; }
+.pest-tile strong { display: block; font-size: 0.85rem; font-weight: 700; color: var(--fg); }
+.pest-tile span { font-size: 0.7rem; color: var(--fg-muted); }
+
+/* ---- Products ---- */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+}
+.product-card {
+  background: var(--bg);
+  border: 1.5px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  display: flex; flex-direction: column;
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+  cursor: pointer;
+}
+.product-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 32px var(--shadow);
+  border-color: var(--accent-2);
+}
+.prod-img {
+  aspect-ratio: 1;
+  background: var(--bg-sub);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 3.6rem;
+  position: relative; overflow: hidden;
+}
+.prod-img-bg {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 7rem; opacity: 0.07;
+  user-select: none;
+}
+.prod-badge {
+  position: absolute; top: 10px; right: 10px;
+  font-size: 0.62rem; font-weight: 800;
+  padding: 3px 9px; border-radius: 20px;
+  letter-spacing: 0.03em;
+}
+.badge-new  { background: var(--accent); color: #fff; }
+.badge-sale { background: var(--danger);  color: #fff; }
+.badge-hot  { background: #EA580C;        color: #fff; }
+.prod-body {
+  padding: 14px; flex: 1;
+  display: flex; flex-direction: column; gap: 4px;
+}
+.prod-cat {
+  font-size: 0.68rem; font-weight: 700;
+  color: var(--accent-2); letter-spacing: 0.05em; text-transform: uppercase;
+}
+.prod-name {
+  font-weight: 700; font-size: 0.9rem; line-height: 1.3;
+}
+.prod-desc {
+  font-size: 0.74rem; color: var(--fg-muted); line-height: 1.4;
+  flex: 1;
+}
+.prod-footer {
+  display: flex; align-items: center;
+  justify-content: space-between; gap: 8px;
+  margin-top: 12px;
+}
+.prod-price { display: flex; flex-direction: column; }
+.price-now {
+  font-family: 'Rubik', sans-serif; font-weight: 800;
+  font-size: 1.12rem; color: var(--accent);
+  font-variant-numeric: tabular-nums;
+}
+.price-was {
+  font-size: 0.7rem; color: var(--fg-muted);
+  text-decoration: line-through;
+  font-variant-numeric: tabular-nums;
+}
+.add-to-cart {
+  width: 38px; height: 38px; flex-shrink: 0;
+  background: var(--cta); color: #fff;
+  border: none; border-radius: 9px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.3rem; cursor: pointer;
+  transition: background 0.15s, transform 0.1s;
+}
+.add-to-cart:hover { background: var(--cta-hover); transform: scale(1.07); }
+.add-to-cart:active { transform: scale(0.95); }
+
+/* ---- Promo banner ---- */
+.promo-banner {
+  background: linear-gradient(135deg, #16A34A 0%, #15803D 100%);
+  color: #fff; border-radius: 16px;
+  display: flex; align-items: center;
+  justify-content: space-between; gap: 20px;
+  padding: 28px 32px;
+  overflow: hidden; position: relative;
+  margin-block: 8px;
+}
+.promo-banner::before {
+  content: "🚚";
+  position: absolute; left: 32px;
+  font-size: 6rem; opacity: 0.1;
+  line-height: 1; bottom: -10px;
+}
+.promo-text h3 {
+  font-family: 'Rubik', sans-serif;
+  font-weight: 800; font-size: 1.35rem; margin-bottom: 4px;
+}
+.promo-text p { font-size: 0.88rem; opacity: 0.88; }
+.btn-promo {
+  background: #fff; color: #15803D;
+  border: none; border-radius: 11px;
+  padding: 12px 26px;
+  font-weight: 800; font-size: 0.93rem;
+  font-family: 'Heebo', sans-serif;
+  cursor: pointer; flex-shrink: 0;
+  transition: transform 0.15s;
+}
+.btn-promo:hover { transform: scale(1.03); }
+
+/* ---- Rating stars ---- */
+.stars { color: #F59E0B; font-size: 0.78rem; display: flex; gap: 1px; }
+.review-count { font-size: 0.72rem; color: var(--fg-muted); }
+
+/* ---- Chatbot FAB ---- */
+.chat-fab {
+  position: fixed;
+  bottom: max(24px, env(safe-area-inset-bottom, 0px));
+  left: max(24px, env(safe-area-inset-left, 0px));
+  z-index: 300;
+}
+.chat-fab-btn {
+  width: 58px; height: 58px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: #fff; border: none; border-radius: 50%;
+  box-shadow: 0 6px 24px rgba(30,107,58,0.45);
+  cursor: pointer; font-size: 1.5rem;
+  display: flex; align-items: center; justify-content: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+  position: relative;
+}
+.chat-fab-btn:hover {
+  transform: scale(1.07);
+  box-shadow: 0 8px 30px rgba(30,107,58,0.55);
+}
+.chat-pulse {
+  position: absolute; top: 3px; right: 3px;
+  width: 12px; height: 12px;
+  background: var(--cta); border-radius: 50%;
+  border: 2px solid #fff;
+}
+.chat-pulse::after {
+  content: "";
+  position: absolute; inset: -3px;
+  border-radius: 50%;
+  border: 2px solid var(--cta);
+  animation: pulse-ring 2s infinite;
+  opacity: 0;
+}
+@keyframes pulse-ring {
+  0%   { transform: scale(0.8); opacity: 0.8; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+.chat-tooltip {
+  position: absolute; bottom: 70px; left: 0;
+  background: var(--bg);
+  border: 1.5px solid var(--border);
+  border-radius: 11px;
+  padding: 8px 14px;
+  font-size: 0.8rem; font-weight: 600;
+  white-space: nowrap;
+  box-shadow: 0 4px 16px var(--shadow);
+  color: var(--fg);
+  pointer-events: none;
+  animation: tooltipIn 0.3s ease 1.5s both;
+}
+@keyframes tooltipIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.chat-tooltip::after {
+  content: "";
+  position: absolute; bottom: -6px; left: 20px;
+  border: 6px solid transparent;
+  border-top-color: var(--border);
+  border-bottom: none;
+}
+
+/* ---- Chat window ---- */
+.chat-win {
+  position: fixed;
+  bottom: max(90px, calc(env(safe-area-inset-bottom, 0px) + 90px));
+  left: max(16px, env(safe-area-inset-left, 0px));
+  width: min(360px, calc(100vw - 32px));
+  background: var(--bg);
+  border: 1.5px solid var(--border);
+  border-radius: 18px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+  z-index: 299;
+  display: flex; flex-direction: column;
+  max-height: min(520px, 72vh);
+  transform-origin: bottom left;
+  transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1), opacity 0.2s;
+  overflow: hidden;
+}
+.chat-win.chat-hidden {
+  transform: scale(0.85) translateY(10px);
+  opacity: 0;
+  pointer-events: none;
+}
+.chat-hdr {
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: #fff; padding: 13px 14px;
+  display: flex; align-items: center; gap: 10px;
+  flex-shrink: 0;
+}
+.chat-av {
+  width: 36px; height: 36px; flex-shrink: 0;
+  background: rgba(255,255,255,0.2);
+  border-radius: 50%; display: flex;
+  align-items: center; justify-content: center; font-size: 1.1rem;
+}
+.chat-hdr-info strong { display: block; font-size: 0.88rem; }
+.chat-hdr-info span { font-size: 0.7rem; opacity: 0.8; display: flex; align-items: center; gap: 4px; }
+.online-dot { width: 6px; height: 6px; background: #6EE892; border-radius: 50%; }
+.chat-hdr-close {
+  margin-inline-start: auto;
+  background: rgba(255,255,255,0.15);
+  border: none; color: #fff;
+  width: 28px; height: 28px;
+  border-radius: 50%; cursor: pointer;
+  font-size: 0.9rem;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.15s;
+}
+.chat-hdr-close:hover { background: rgba(255,255,255,0.3); }
+
+.chat-msgs {
+  flex: 1; overflow-y: auto;
+  padding: 14px; display: flex;
+  flex-direction: column; gap: 10px;
+  scroll-behavior: smooth;
+}
+.chat-msgs::-webkit-scrollbar { width: 4px; }
+.chat-msgs::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+
+.msg { display: flex; gap: 7px; align-items: flex-end; }
+.msg-b { flex-direction: row; }
+.msg-u { flex-direction: row-reverse; }
+.msg-bub {
+  max-width: 82%; padding: 9px 12px;
+  font-size: 0.84rem; line-height: 1.45;
+  border-radius: 14px;
+}
+.msg-b .msg-bub {
+  background: var(--surface);
+  border-radius: 2px 14px 14px 14px;
+}
+.msg-u .msg-bub {
+  background: var(--accent); color: #fff;
+  border-radius: 14px 2px 14px 14px;
+}
+.msg-ts { font-size: 0.62rem; color: var(--fg-muted); flex-shrink: 0; margin-bottom: 2px; }
+
+.chat-quick-wrap {
+  display: flex; flex-wrap: wrap; gap: 6px;
+  padding: 2px 14px 10px; flex-shrink: 0;
+}
+.qbtn {
+  background: var(--bg-sub);
+  border: 1.5px solid var(--border);
+  border-radius: 20px; padding: 5px 12px;
+  font-size: 0.74rem; font-weight: 600;
+  color: var(--fg); font-family: 'Heebo', sans-serif;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.qbtn:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+.chat-input-row {
+  display: flex; gap: 8px; padding: 10px 12px;
+  border-top: 1px solid var(--border); flex-shrink: 0;
+  align-items: center;
+}
+.chat-input {
+  flex: 1; background: var(--bg-sub);
+  border: 1.5px solid var(--border);
+  border-radius: 22px; padding: 8px 14px;
+  font-family: 'Heebo', sans-serif; font-size: 0.84rem;
+  color: var(--fg); outline: none;
+  transition: border-color 0.2s;
+}
+.chat-input:focus { border-color: var(--accent-2); }
+.chat-send-btn {
+  width: 36px; height: 36px; flex-shrink: 0;
+  background: var(--accent); color: #fff;
+  border: none; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem; cursor: pointer;
+  transition: background 0.15s;
+}
+.chat-send-btn:hover { background: var(--accent-2); }
+
+/* ---- Footer ---- */
+footer {
+  background: var(--bg-sub);
+  border-top: 1px solid var(--border);
+  padding-block: 44px 32px;
+  margin-top: 56px;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 32px;
+  max-width: 1200px; margin: 0 auto;
+  padding-inline: max(20px, env(safe-area-inset-left, 0px));
+}
+.footer-brand .logo { margin-bottom: 12px; }
+.footer-brand p {
+  font-size: 0.82rem; color: var(--fg-muted);
+  line-height: 1.65; max-width: 250px;
+}
+.footer-socials { display: flex; gap: 8px; margin-top: 14px; }
+.social-btn {
+  width: 34px; height: 34px;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 8px; display: flex; align-items: center;
+  justify-content: center; font-size: 0.9rem;
+  text-decoration: none; color: var(--fg-muted);
+  transition: background 0.15s, color 0.15s;
+}
+.social-btn:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
+.footer-col h4 {
+  font-weight: 700; font-size: 0.84rem;
+  margin-bottom: 12px; letter-spacing: 0.03em;
+}
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+.footer-col a {
+  font-size: 0.8rem; color: var(--fg-muted);
+  text-decoration: none; transition: color 0.15s;
+}
+.footer-col a:hover { color: var(--accent-2); }
+.footer-bottom {
+  margin-top: 32px; padding-top: 20px;
+  border-top: 1px solid var(--border);
+  display: flex; align-items: center;
+  justify-content: space-between; flex-wrap: wrap; gap: 10px;
+  max-width: 1200px; margin-inline: auto;
+  padding-inline: max(20px, env(safe-area-inset-left, 0px));
+}
+.footer-bottom p { font-size: 0.74rem; color: var(--fg-muted); }
+.payment-icons { display: flex; gap: 6px; }
+.pay-icon {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 5px; padding: 2px 8px;
+  font-size: 0.65rem; font-weight: 700; color: var(--fg-muted);
+  letter-spacing: 0.04em;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 900px) {
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .footer-brand { grid-column: 1 / -1; }
+}
+@media (max-width: 700px) {
+  .hero-inner { grid-template-columns: 1fr; }
+  .pest-grid   { display: none; }
+  .hero        { padding: 36px 0 32px; }
+  .search-bar  { display: none; }
+  .btn-whatsapp span { display: none; }
+  .btn-whatsapp { padding: 8px 10px; }
+  .trust-item { flex: 1 1 calc(50% - 1px); border-inline-end: none; }
+  .trust-item:nth-child(odd)  { border-inline-end: 1px solid var(--border); }
+  .trust-item:nth-child(-n+2) { border-top: none; }
+  .trust-item                 { border-top: 1px solid var(--border); }
+  .trust-inner                { padding-inline: 0; }
+  .hero h1 { font-size: 1.75rem; }
+}
+@media (max-width: 480px) {
+  .product-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .pest-tiles   { grid-template-columns: repeat(4, 1fr); }
+  .footer-grid  { grid-template-columns: 1fr; }
+  .promo-banner { flex-direction: column; text-align: center; }
+  .promo-banner::before { display: none; }
+  .hero h1 { font-size: 1.5rem; }
+  .hero-stats { gap: 18px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition-duration: 0.01ms !important; }
+}
+</style>
+
+
+</head>
+<body>
+<!-- ===================== TOPBAR ===================== -->
+<div class="topbar">
+  <span class="topbar-item">🚚 משלוח חינם מעל 100 ₪</span>
+  <span class="topbar-sep">|</span>
+  <span class="topbar-item">📦 1–4 ימי עסקים לכל הארץ</span>
+  <span class="topbar-sep">|</span>
+  <span class="topbar-item">☎️ שירות מקצועי: 03-XXXXXXX</span>
+</div>
+
+<!-- ===================== HEADER ===================== -->
+<header class="site-header">
+  <div class="header-inner">
+    <a class="logo" href="#">
+      <div class="logo-mark">🛡️</div>
+      <div class="logo-words">
+        <strong>א.ש.ד. הדברה</strong>
+        <span>חנות מקצועית למוצרי הדברה</span>
+      </div>
+    </a>
+
+    <div class="search-bar">
+      <input type="text" placeholder="חפש לפי מזיק, מוצר או מותג…">
+      <button aria-label="חפש">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+        </svg>
+      </button>
+    </div>
+
+    <div class="hdr-actions">
+      <button class="btn-whatsapp" onclick="openChat()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+        </svg>
+        <span>וואצאפ</span>
+      </button>
+
+      <button class="icon-btn" aria-label="מועדפים">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+        </svg>
+      </button>
+
+      <div class="cart-wrap">
+        <button class="icon-btn" aria-label="עגלה" id="cartBtn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+          </svg>
+        </button>
+        <span class="cart-count" id="cartCount">0</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ===================== CATEGORY NAV ===================== -->
+<nav class="cat-nav">
+  <div class="cat-nav-scroll">
+    <a class="cat-link on" href="#">🏠 הכל</a>
+    <a class="cat-link" href="#">🐜 נמלים</a>
+    <a class="cat-link" href="#">🪳 תיקנים</a>
+    <a class="cat-link" href="#">🐭 מכרסמים</a>
+    <a class="cat-link" href="#">🦟 יתושים</a>
+    <a class="cat-link" href="#">🪰 זבובים</a>
+    <a class="cat-link" href="#">🕊️ יונים</a>
+    <a class="cat-link" href="#">🦋 עש ומזיקי מזון</a>
+    <a class="cat-link" href="#">🌿 הדברה אורגנית</a>
+    <a class="cat-link" href="#">🔧 ציוד מקצועי</a>
+  </div>
+</nav>
+
+<!-- ===================== HERO ===================== -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-eyebrow">
+        <span>⭐</span> מוצרי הדברה מקצועיים לשימוש ביתי
+      </div>
+      <h1>
+        פתרון לכל מזיק —<br>
+        <em>עד הבית שלך</em>
+      </h1>
+      <p class="hero-sub">
+        מאות מוצרי הדברה מקצועיים שמגיעים אליך עד הדלת.
+        משלוח חינם מעל 100 ₪, ייעוץ מדביר מוסמך ב-WhatsApp.
+      </p>
+      <div class="hero-actions">
+        <a class="btn-hero" href="#">
+          לחנות המלאה
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a class="btn-hero-ghost" href="#" onclick="openChat(); return false;">
+          💬 ייעוץ חינם
+        </a>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <span class="stat-num">+500</span>
+          <span class="stat-lbl">מוצרים בחנות</span>
+        </div>
+        <div>
+          <span class="stat-num">12,000+</span>
+          <span class="stat-lbl">לקוחות מרוצים</span>
+        </div>
+        <div>
+          <span class="stat-num">1–4</span>
+          <span class="stat-lbl">ימים עד אליך</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="pest-grid">
+      <a class="pest-card" href="#"><em>🐜</em><strong>נמלים</strong><span>ג'ל, גרנולר</span></a>
+      <a class="pest-card" href="#"><em>🪳</em><strong>תיקנים</strong><span>פתיון, ריסוס</span></a>
+      <a class="pest-card" href="#"><em>🐭</em><strong>מכרסמים</strong><span>מלכודות, פיתיון</span></a>
+      <a class="pest-card" href="#"><em>🦟</em><strong>יתושים</strong><span>רשתות, קוטלים</span></a>
+      <a class="pest-card" href="#"><em>🕊️</em><strong>יונים</strong><span>דוקרנים, רשתות</span></a>
+      <a class="pest-card" href="#"><em>🦋</em><strong>עש</strong><span>מלכודות, פרומון</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== TRUST STRIP ===================== -->
+<div class="trust-strip">
+  <div class="trust-inner">
+    <div class="trust-item">
+      <div class="trust-icon">🚚</div>
+      <div class="trust-txt">
+        <strong>משלוח חינם מ-100 ₪</strong>
+        <span>לכל הארץ, 1–4 ימי עסקים</span>
+      </div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon">🔒</div>
+      <div class="trust-txt">
+        <strong>תשלום מאובטח</strong>
+        <span>תקן PCI, כרטיסי אשראי וביט</span>
+      </div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon">👨‍🔬</div>
+      <div class="trust-txt">
+        <strong>ייעוץ מדביר מוסמך</strong>
+        <span>חינם בוואצאפ לפני הרכישה</span>
+      </div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon">↩️</div>
+      <div class="trust-txt">
+        <strong>החזרה תוך 14 יום</strong>
+        <span>ללא שאלות, ללא עלות</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== MAIN CONTENT ===================== -->
+<main>
+
+  <!-- Categories -->
+  <div class="section inner">
+    <div class="section-head">
+      <h2>חפש לפי מזיק <small>מה מטריד אתכם?</small></h2>
+      <a class="see-all" href="#">כל הקטגוריות ←</a>
+    </div>
+    <div class="pest-tiles">
+      <a class="pest-tile" href="#"><em>🐜</em><strong>נמלים</strong><span>18 מוצרים</span></a>
+      <a class="pest-tile" href="#"><em>🪳</em><strong>תיקנים</strong><span>24 מוצרים</span></a>
+      <a class="pest-tile" href="#"><em>🐭</em><strong>מכרסמים</strong><span>16 מוצרים</span></a>
+      <a class="pest-tile" href="#"><em>🦟</em><strong>יתושים</strong><span>22 מוצרים</span></a>
+      <a class="pest-tile" href="#"><em>🪰</em><strong>זבובים</strong><span>14 מוצרים</span></a>
+      <a class="pest-tile" href="#"><em>🕊️</em><strong>יונים</strong><span>12 מוצרים</span></a>
+      <a class="pest-tile" href="#"><em>🦋</em><strong>עש</strong><span>10 מוצרים</span></a>
+      <a class="pest-tile" href="#"><em>🌿</em><strong>אורגני</strong><span>8 מוצרים</span></a>
+    </div>
+  </div>
+
+  <!-- Featured products -->
+  <div class="section inner">
+    <div class="section-head">
+      <h2>🔥 הנמכרים ביותר</h2>
+      <a class="see-all" href="#">כל המוצרים ←</a>
+    </div>
+    <div class="product-grid">
+
+      <!-- Product 1 -->
+      <div class="product-card">
+        <div class="prod-img">
+          <div class="prod-img-bg">🐜</div>
+          🟢
+          <span class="prod-badge badge-hot">🔥 פופולרי</span>
+        </div>
+        <div class="prod-body">
+          <span class="prod-cat">נמלים</span>
+          <span class="prod-name">טופג'ל המקורי — פתיון ג'ל להדברת נמלים</span>
+          <span class="prod-desc">פתיון ג'ל מקצועי עם אפקט מדורג, יעיל לנמלת הבית ונמלת האש. זוג צינוריות 15 גרם.</span>
+          <div class="stars">★★★★★ <span class="review-count">(342)</span></div>
+          <div class="prod-footer">
+            <div class="prod-price">
+              <span class="price-now">95 ₪</span>
+            </div>
+            <button class="add-to-cart" onclick="addCart(this)" aria-label="הוסף לעגלה">+</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 2 -->
+      <div class="product-card">
+        <div class="prod-img">
+          <div class="prod-img-bg">🪳</div>
+          🔵
+          <span class="prod-badge badge-sale">−18%</span>
+        </div>
+        <div class="prod-body">
+          <span class="prod-cat">תיקנים</span>
+          <span class="prod-name">טורפדו ג'ל — פתיון להדברת תיקנים</span>
+          <span class="prod-desc">ג'ל מקצועי לתיקן הגרמני ולסוגי תיקנים אחרים. יעיל גם בחדרי מזון. 15 גרם.</span>
+          <div class="stars">★★★★★ <span class="review-count">(218)</span></div>
+          <div class="prod-footer">
+            <div class="prod-price">
+              <span class="price-now">78 ₪</span>
+              <span class="price-was">95 ₪</span>
+            </div>
+            <button class="add-to-cart" onclick="addCart(this)" aria-label="הוסף לעגלה">+</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 3 -->
+      <div class="product-card">
+        <div class="prod-img">
+          <div class="prod-img-bg">🐭</div>
+          🪤
+          <span class="prod-badge badge-new">חדש</span>
+        </div>
+        <div class="prod-body">
+          <span class="prod-cat">מכרסמים</span>
+          <span class="prod-name">מלכודת קפיץ לחולדה — Victor ארה"ב</span>
+          <span class="prod-desc">המלכודת הפופולרית בעולם. מתכת מגולוונת, קפיץ חזק, לשימוש חוזר. תוצרת ויקטור.</span>
+          <div class="stars">★★★★☆ <span class="review-count">(156)</span></div>
+          <div class="prod-footer">
+            <div class="prod-price">
+              <span class="price-now">29.90 ₪</span>
+            </div>
+            <button class="add-to-cart" onclick="addCart(this)" aria-label="הוסף לעגלה">+</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 4 -->
+      <div class="product-card">
+        <div class="prod-img">
+          <div class="prod-img-bg">🕊️</div>
+          🦉
+        </div>
+        <div class="prod-body">
+          <span class="prod-cat">הרחקת יונים</span>
+          <span class="prod-name">דחליל ינשוף עם ראש מסתובב</span>
+          <span class="prod-desc">דחליל תלת-ממדי עם ראש מסתובב ברוח. פוחד ומרחיק יונים ועצים בצורה הומנית.</span>
+          <div class="stars">★★★★☆ <span class="review-count">(89)</span></div>
+          <div class="prod-footer">
+            <div class="prod-price">
+              <span class="price-now">79 ₪</span>
+            </div>
+            <button class="add-to-cart" onclick="addCart(this)" aria-label="הוסף לעגלה">+</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 5 -->
+      <div class="product-card">
+        <div class="prod-img">
+          <div class="prod-img-bg">🦋</div>
+          🔺
+          <span class="prod-badge badge-sale">מארז חיסכון</span>
+        </div>
+        <div class="prod-body">
+          <span class="prod-cat">עש ומזיקי מזון</span>
+          <span class="prod-name">סטיקי טרפ — מלכודת פרומון לעש המזון</span>
+          <span class="prod-desc">מלכודת משולש עם פרומון משיכה עוצמתי. ללכידה ולניטור עש הקמח ועש המזון.</span>
+          <div class="stars">★★★★★ <span class="review-count">(201)</span></div>
+          <div class="prod-footer">
+            <div class="prod-price">
+              <span class="price-now">52 ₪</span>
+              <span class="price-was">60 ₪</span>
+            </div>
+            <button class="add-to-cart" onclick="addCart(this)" aria-label="הוסף לעגלה">+</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 6 -->
+      <div class="product-card">
+        <div class="prod-img">
+          <div class="prod-img-bg">🔧</div>
+          💦
+        </div>
+        <div class="prod-body">
+          <span class="prod-cat">ציוד מקצועי</span>
+          <span class="prod-name">מרסס הדברה ידני 5 ליטר — Hunter</span>
+          <span class="prod-desc">מרסס מקצועי עם לחץ אחיד וצינור גמיש. מתאים לריסוס תרסיסים, חומצות ונוזלים.</span>
+          <div class="stars">★★★★☆ <span class="review-count">(74)</span></div>
+          <div class="prod-footer">
+            <div class="prod-price">
+              <span class="price-now">79 ₪</span>
+            </div>
+            <button class="add-to-cart" onclick="addCart(this)" aria-label="הוסף לעגלה">+</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 7 -->
+      <div class="product-card">
+        <div class="prod-img">
+          <div class="prod-img-bg">🦟</div>
+          🌐
+        </div>
+        <div class="prod-body">
+          <span class="prod-cat">יתושים</span>
+          <span class="prod-name">רשת יתושים מגנטית לחלון</span>
+          <span class="prod-desc">רשת PVC איכותית עם מגנטים לסגירה עצמית. קלה להרכבה, חיתוך לפי מידה.</span>
+          <div class="stars">★★★★★ <span class="review-count">(412)</span></div>
+          <div class="prod-footer">
+            <div class="prod-price">
+              <span class="price-now">45 ₪</span>
+            </div>
+            <button class="add-to-cart" onclick="addCart(this)" aria-label="הוסף לעגלה">+</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 8 -->
+      <div class="product-card">
+        <div class="prod-img">
+          <div class="prod-img-bg">🌿</div>
+          🍃
+          <span class="prod-badge badge-new">ביו</span>
+        </div>
+        <div class="prod-body">
+          <span class="prod-cat">הדברה אורגנית</span>
+          <span class="prod-name">יהלום — תרסיס אורגני לחרקים בצמחים</span>
+          <span class="prod-desc">פתרון ביולוגי לזחלים ומעופפים. בטוח לילדים ולבעלי חיים. 500 מ"ל.</span>
+          <div class="stars">★★★★☆ <span class="review-count">(98)</span></div>
+          <div class="prod-footer">
+            <div class="prod-price">
+              <span class="price-now">69 ₪</span>
+              <span class="price-was">79 ₪</span>
+            </div>
+            <button class="add-to-cart" onclick="addCart(this)" aria-label="הוסף לעגלה">+</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Promo banner -->
+  <div class="section inner" style="padding-top:0">
+    <div class="promo-banner">
+      <div class="promo-text">
+        <h3>משלוח חינם מעל 100 ₪ 🎉</h3>
+        <p>הזמינו עוד היום — מגיע אליך תוך 1–4 ימי עסקים לכל הארץ</p>
+      </div>
+      <button class="btn-promo">הזמן עכשיו</button>
+    </div>
+  </div>
+
+  <!-- Second row: מכרסמים + יונים -->
+  <div class="section inner">
+    <div class="section-head">
+      <h2>🕊️ הרחקת יונים ומכרסמים</h2>
+      <a class="see-all" href="#">ראה הכל ←</a>
+    </div>
+    <div class="product-grid">
+
+      <div class="product-card">
+        <div class="prod-img">
+          <div class="prod-img-bg">🕊️</div>
+          📌
+        </div>
+        <div class="prod-body">
+          <span class="prod-cat">הרחקת יונים</span>
+          <span class="prod-name">דוקרנים להרחקת יונים — ארגז 10 יח'</span>
+          <span class="prod-desc">דוקרנים מפוליקרבונט, בסיס רחב 11 ס"מ, מחוזק לאורך שנים. מונע נחיתה על אדנים ומרפסות.</span>
+          <div class="stars">★★★★★ <span class="review-count">(187)</span></div>
+          <div class="prod-footer">
+            <div class="prod-price"><span class="price-now">120 ₪</span></div>
+            <button class="add-to-cart" onclick="addCart(this)" aria-label="הוסף לעגלה">+</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="prod-img">
+          <div class="prod-img-bg">🕊️</div>
+          🕸️
+        </div>
+        <div class="prod-body">
+          <span class="prod-cat">הרחקת יונים</span>
+          <span class="prod-name">רשת יונים מקצועית שקופה 5×5 מ'</span>
+          <span class="prod-desc">רשת פוליאתילן שקופה עם חורים 5×5 מ"מ. הפתרון הכי יעיל לחסימת פירים ומרפסות.</span>
+          <div class="stars">★★★★☆ <span class="review-count">(134)</span></div>
+          <div class="prod-footer">
+            <div class="prod-price"><span class="price-now">90 ₪</span></div>
+            <button class="add-to-cart" onclick="addCart(this)" aria-label="הוסף לעגלה">+</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="prod-img">
+          <div class="prod-img-bg">🐭</div>
+          🏠
+        </div>
+        <div class="prod-body">
+          <span class="prod-cat">מכרסמים</span>
+          <span class="prod-name">מלכודת נדנדה הומנית — Tip Trap</span>
+          <span class="prod-desc">מלכודת ידידותית לחיה, ללכידה ושחרור. פלסטיק חזק, שקוף. מתאים לעכברים ולחלדונים.</span>
+          <div class="stars">★★★★☆ <span class="review-count">(91)</span></div>
+          <div class="prod-footer">
+            <div class="prod-price"><span class="price-now">27.90 ₪</span></div>
+            <button class="add-to-cart" onclick="addCart(this)" aria-label="הוסף לעגלה">+</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="prod-img">
+          <div class="prod-img-bg">🐭</div>
+          ⚡
+        </div>
+        <div class="prod-body">
+          <span class="prod-cat">מכרסמים</span>
+          <span class="prod-name">מלכודת קפיץ לחולדה — מארז 12 יח'</span>
+          <span class="prod-desc">12 מלכודות ויקטור המקוריות. חיסכון של 12% לעומת רכישה בודדת. למסעדות ומרכזי הפצה.</span>
+          <div class="stars">★★★★★ <span class="review-count">(63)</span></div>
+          <div class="prod-footer">
+            <div class="prod-price">
+              <span class="price-now">295 ₪</span>
+              <span class="price-was">335 ₪</span>
+            </div>
+            <button class="add-to-cart" onclick="addCart(this)" aria-label="הוסף לעגלה">+</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</main>
+
+<!-- ===================== FOOTER ===================== -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a class="logo" href="#">
+        <div class="logo-mark">🛡️</div>
+        <div class="logo-words">
+          <strong>א.ש.ד. הדברה</strong>
+          <span>חנות מקצועית למוצרי הדברה</span>
+        </div>
+      </a>
+      <p>חנות אינטרנטית למוצרי הדברה מקצועיים עם ייעוץ חינם ממדביר מוסמך. משלוח חינם לכל הארץ על הזמנות מעל 100 ₪.</p>
+      <div class="footer-socials">
+        <a class="social-btn" href="#" aria-label="פייסבוק">📘</a>
+        <a class="social-btn" href="#" aria-label="אינסטגרם">📸</a>
+        <a class="social-btn" href="#" aria-label="יוטיוב">▶️</a>
+        <a class="social-btn" href="#" aria-label="וואצאפ">💬</a>
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <h4>קטגוריות</h4>
+      <ul>
+        <li><a href="#">נמלים</a></li>
+        <li><a href="#">תיקנים וג'וקים</a></li>
+        <li><a href="#">מכרסמים</a></li>
+        <li><a href="#">יתושים</a></li>
+        <li><a href="#">הרחקת יונים</a></li>
+        <li><a href="#">עש ומזיקי מזון</a></li>
+        <li><a href="#">הדברה אורגנית</a></li>
+        <li><a href="#">ציוד מקצועי</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>שירות לקוחות</h4>
+      <ul>
+        <li><a href="#">צור קשר</a></li>
+        <li><a href="#">מעקב הזמנות</a></li>
+        <li><a href="#">ביטולים והחזרות</a></li>
+        <li><a href="#">מדיניות משלוחים</a></li>
+        <li><a href="#">שאלות נפוצות</a></li>
+        <li><a href="#">ייעוץ מקצועי</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>מידע</h4>
+      <ul>
+        <li><a href="#">אודות</a></li>
+        <li><a href="#">הפוך למפיץ</a></li>
+        <li><a href="#">תקנון החנות</a></li>
+        <li><a href="#">מדיניות פרטיות</a></li>
+        <li><a href="#">הצהרת נגישות</a></li>
+        <li><a href="#">מפת האתר</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2025 א.ש.ד. הדברה. כל הזכויות שמורות. כל המחירים כוללים מע"מ.</p>
+    <div class="payment-icons">
+      <span class="pay-icon">VISA</span>
+      <span class="pay-icon">MC</span>
+      <span class="pay-icon">BIT</span>
+      <span class="pay-icon">PAYBOX</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ===================== CHATBOT ===================== -->
+<div class="chat-fab">
+  <div class="chat-tooltip" id="chatTooltip">💬 צריכים עזרה? שאלו אותנו!</div>
+  <button class="chat-fab-btn" onclick="toggleChat()" aria-label="פתח צ'אט" id="chatFab">
+    💬
+    <span class="chat-pulse"></span>
+  </button>
+</div>
+
+<div class="chat-win chat-hidden" id="chatWin" role="dialog" aria-label="צ'אט עם נציג">
+  <div class="chat-hdr">
+    <div class="chat-av">🛡️</div>
+    <div class="chat-hdr-info">
+      <strong>ייעוץ א.ש.ד. הדברה</strong>
+      <span><span class="online-dot"></span>מחובר עכשיו</span>
+    </div>
+    <button class="chat-hdr-close" onclick="toggleChat()" aria-label="סגור">✕</button>
+  </div>
+
+  <div class="chat-msgs" id="chatMsgs">
+    <div class="msg msg-b">
+      <div class="msg-bub">שלום! 👋 אני יכול לעזור לך למצוא את הפתרון הנכון לכל מזיק. ספר לי — מה מטריד אתכם?</div>
+      <span class="msg-ts">עכשיו</span>
+    </div>
+  </div>
+
+  <div class="chat-quick-wrap" id="quickReplies">
+    <button class="qbtn" onclick="quickReply('נמלים בבית')">🐜 נמלים</button>
+    <button class="qbtn" onclick="quickReply('תיקנים במטבח')">🪳 תיקנים</button>
+    <button class="qbtn" onclick="quickReply('עכברים')">🐭 עכברים</button>
+    <button class="qbtn" onclick="quickReply('יתושים')">🦟 יתושים</button>
+    <button class="qbtn" onclick="quickReply('יונים על המרפסת')">🕊️ יונים</button>
+    <button class="qbtn" onclick="quickReply('משלוח חינם')">🚚 משלוח</button>
+  </div>
+
+  <div class="chat-input-row">
+    <input class="chat-input" type="text" placeholder="כתוב הודעה…" id="chatInput"
+           onkeydown="if(event.key==='Enter') sendMsg()">
+    <button class="chat-send-btn" onclick="sendMsg()" aria-label="שלח">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
+      </svg>
+    </button>
+  </div>
+</div>
+
+<script>
+/* ---- Cart ---- */
+let cartN = 0;
+function addCart(btn) {
+  cartN++;
+  document.getElementById('cartCount').textContent = cartN;
+  btn.textContent = '✓';
+  btn.style.background = 'var(--accent)';
+  setTimeout(() => { btn.textContent = '+'; btn.style.background = ''; }, 1200);
+}
+
+/* ---- Chatbot ---- */
+let chatOpen = false;
+const responses = {
+  'נמלים': 'לנמלים ממליצים על **טופג'ל** — פתיון ג'ל שמביא נמלות להרעיל את הקן מבפנים. יעיל תוך 48–72 שעות! 🐜\n👉 [טופג'ל 95 ₪]',
+  'תיקנים': 'לתיקן הגרמני במטבח — **טורפדו ג'ל** הוא הפתרון הכי יעיל. לג'וקים גדולים מבחוץ — ריסוס קצה. אפשר לשלוח לך הצעה מותאמת? 🪳',
+  'עכברים': 'לעכברים: **מלכודת קפיץ Victor** (29.90 ₪) היא הכי אמינה. יש גם **מלכודת הומנית** לשחרור חי (27.90 ₪). איזה סוג מתאים לכם? 🐭',
+  'יתושים': 'לרשת יתושים מגנטית לחלון — 45 ₪, קלה לרכב עצמאית. לסגירת חדר — נר ציטרונלה (29 ₪). 🦟',
+  'יונים': 'לדחליל עם ראש מסתובב — 79 ₪. לחסימה מלאה — רשת יונים שקופה 5×5 מ' (90 ₪) + דוקרנים (120 ₪). 🕊️',
+  'משלוח': 'משלוח חינם על כל הזמנה מעל **100 ₪**! מתחת ל-100 ₪ — משלוח 25 ₪ לנקודת איסוף או 35 ₪ עד הבית. 1–4 ימי עסקים. 🚚',
+};
+
+function getReply(text) {
+  const t = text.toLowerCase();
+  for (const [key, val] of Object.entries(responses)) {
+    if (t.includes(key.toLowerCase())) return val;
+  }
+  return 'תודה! 🙏 נציג שלנו יחזור אליך תוך כמה דקות. בינתיים אפשר לחפש לפי המזיק שמעליך, או להתקשר: 03-XXXXXXX';
+}
+
+function appendMsg(text, isUser) {
+  const msgs = document.getElementById('chatMsgs');
+  const d = document.createElement('div');
+  d.className = 'msg ' + (isUser ? 'msg-u' : 'msg-b');
+  const now = new Date().toLocaleTimeString('he-IL', {hour:'2-digit',minute:'2-digit'});
+  d.innerHTML = `<div class="msg-bub">${text.replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>').replace(/\n/g,'<br>')}</div><span class="msg-ts">${now}</span>`;
+  msgs.appendChild(d);
+  msgs.scrollTop = msgs.scrollHeight;
+}
+
+function sendMsg() {
+  const inp = document.getElementById('chatInput');
+  const text = inp.value.trim();
+  if (!text) return;
+  appendMsg(text, true);
+  inp.value = '';
+  document.getElementById('quickReplies').style.display = 'none';
+  setTimeout(() => appendMsg(getReply(text), false), 700);
+}
+
+function quickReply(text) {
+  appendMsg(text, true);
+  document.getElementById('quickReplies').style.display = 'none';
+  setTimeout(() => appendMsg(getReply(text), false), 600);
+}
+
+function toggleChat() {
+  chatOpen = !chatOpen;
+  const win = document.getElementById('chatWin');
+  const fab = document.getElementById('chatFab');
+  const tip = document.getElementById('chatTooltip');
+  if (chatOpen) {
+    win.classList.remove('chat-hidden');
+    fab.textContent = '✕';
+    if (tip) tip.style.display = 'none';
+    document.getElementById('chatInput').focus();
+  } else {
+    win.classList.add('chat-hidden');
+    fab.textContent = '💬';
+  }
+}
+
+function openChat() {
+  if (!chatOpen) toggleChat();
+}
+
+/* ---- Category nav active ---- */
+document.querySelectorAll('.cat-link').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    document.querySelectorAll('.cat-link').forEach(l => l.classList.remove('on'));
+    a.classList.add('on');
+  });
+});
+</script>
+
+</body>
+</html>
