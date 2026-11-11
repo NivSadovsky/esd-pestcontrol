@@ -28,6 +28,8 @@
   --shadow:     rgba(30,107,58,0.10);
   color-scheme: light;
 }
+
+.product-card.cat-hidden { display: none !important; }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --bg:         #0C1810;
@@ -863,16 +865,16 @@ footer {
 <!-- ===================== CATEGORY NAV ===================== -->
 <nav class="cat-nav">
   <div class="cat-nav-scroll">
-    <a class="cat-link on" href="#">🏠 הכל</a>
-    <a class="cat-link" href="#">🐜 נמלים</a>
-    <a class="cat-link" href="#">🪳 תיקנים</a>
-    <a class="cat-link" href="#">🐭 מכרסמים</a>
-    <a class="cat-link" href="#">🦟 יתושים</a>
-    <a class="cat-link" href="#">🪰 זבובים</a>
-    <a class="cat-link" href="#">🕊️ יונים</a>
-    <a class="cat-link" href="#">🦋 עש ומזיקי מזון</a>
-    <a class="cat-link" href="#">🌿 הדברה אורגנית</a>
-    <a class="cat-link" href="#">🔧 ציוד מקצועי</a>
+    <a class="cat-link on" href="#" data-filter="הכל">🏠 הכל</a>
+    <a class="cat-link" href="#" data-filter="נמלים">🐜 נמלים</a>
+    <a class="cat-link" href="#" data-filter="תיקנים">🪳 תיקנים</a>
+    <a class="cat-link" href="#" data-filter="מכרסמים">🐭 מכרסמים</a>
+    <a class="cat-link" href="#" data-filter="יתושים">🦟 יתושים</a>
+    <a class="cat-link" href="#" data-filter="זבובים">🪰 זבובים</a>
+    <a class="cat-link" href="#" data-filter="יונים">🕊️ יונים</a>
+    <a class="cat-link" href="#" data-filter="עש">🦋 עש ומזיקי מזון</a>
+    <a class="cat-link" href="#" data-filter="אורגני">🌿 הדברה אורגנית</a>
+    <a class="cat-link" href="#" data-filter="ציוד">🔧 ציוד מקצועי</a>
   </div>
 </nav>
 
@@ -892,7 +894,7 @@ footer {
         משלוח חינם מעל 100 ₪, ייעוץ מדביר מוסמך ב-WhatsApp.
       </p>
       <div class="hero-actions">
-        <a class="btn-hero" href="#">
+        <a class="btn-hero" href="#" onclick="filterCat('הכל');return false;">
           לחנות המלאה
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
@@ -917,12 +919,12 @@ footer {
     </div>
 
     <div class="pest-grid">
-      <a class="pest-card" href="#"><em>🐜</em><strong>נמלים</strong><span>ג'ל, גרנולר</span></a>
-      <a class="pest-card" href="#"><em>🪳</em><strong>תיקנים</strong><span>פתיון, ריסוס</span></a>
-      <a class="pest-card" href="#"><em>🐭</em><strong>מכרסמים</strong><span>מלכודות, פיתיון</span></a>
-      <a class="pest-card" href="#"><em>🦟</em><strong>יתושים</strong><span>רשתות, קוטלים</span></a>
-      <a class="pest-card" href="#"><em>🕊️</em><strong>יונים</strong><span>דוקרנים, רשתות</span></a>
-      <a class="pest-card" href="#"><em>🦋</em><strong>עש</strong><span>מלכודות, פרומון</span></a>
+      <a class="pest-card" href="#" onclick="filterCat('נמלים');return false;"><em>🐜</em><strong>נמלים</strong><span>ג'ל, גרנולר</span></a>
+      <a class="pest-card" href="#" onclick="filterCat('תיקנים');return false;"><em>🪳</em><strong>תיקנים</strong><span>פתיון, ריסוס</span></a>
+      <a class="pest-card" href="#" onclick="filterCat('מכרסמים');return false;"><em>🐭</em><strong>מכרסמים</strong><span>מלכודות, פיתיון</span></a>
+      <a class="pest-card" href="#" onclick="filterCat('יתושים');return false;"><em>🦟</em><strong>יתושים</strong><span>רשתות, קוטלים</span></a>
+      <a class="pest-card" href="#" onclick="filterCat('יונים');return false;"><em>🕊️</em><strong>יונים</strong><span>דוקרנים, רשתות</span></a>
+      <a class="pest-card" href="#" onclick="filterCat('עש');return false;"><em>🦋</em><strong>עש</strong><span>מלכודות, פרומון</span></a>
     </div>
   </div>
 </section>
@@ -971,14 +973,14 @@ footer {
       <a class="see-all" href="#">כל הקטגוריות ←</a>
     </div>
     <div class="pest-tiles">
-      <a class="pest-tile" href="#"><em>🐜</em><strong>נמלים</strong><span>18 מוצרים</span></a>
-      <a class="pest-tile" href="#"><em>🪳</em><strong>תיקנים</strong><span>24 מוצרים</span></a>
-      <a class="pest-tile" href="#"><em>🐭</em><strong>מכרסמים</strong><span>16 מוצרים</span></a>
-      <a class="pest-tile" href="#"><em>🦟</em><strong>יתושים</strong><span>22 מוצרים</span></a>
-      <a class="pest-tile" href="#"><em>🪰</em><strong>זבובים</strong><span>14 מוצרים</span></a>
-      <a class="pest-tile" href="#"><em>🕊️</em><strong>יונים</strong><span>12 מוצרים</span></a>
-      <a class="pest-tile" href="#"><em>🦋</em><strong>עש</strong><span>10 מוצרים</span></a>
-      <a class="pest-tile" href="#"><em>🌿</em><strong>אורגני</strong><span>8 מוצרים</span></a>
+      <a class="pest-tile" href="#" onclick="filterCat('נמלים');return false;"><em>🐜</em><strong>נמלים</strong><span>18 מוצרים</span></a>
+      <a class="pest-tile" href="#" onclick="filterCat('תיקנים');return false;"><em>🪳</em><strong>תיקנים</strong><span>24 מוצרים</span></a>
+      <a class="pest-tile" href="#" onclick="filterCat('מכרסמים');return false;"><em>🐭</em><strong>מכרסמים</strong><span>16 מוצרים</span></a>
+      <a class="pest-tile" href="#" onclick="filterCat('יתושים');return false;"><em>🦟</em><strong>יתושים</strong><span>22 מוצרים</span></a>
+      <a class="pest-tile" href="#" onclick="filterCat('זבובים');return false;"><em>🪰</em><strong>זבובים</strong><span>14 מוצרים</span></a>
+      <a class="pest-tile" href="#" onclick="filterCat('יונים');return false;"><em>🕊️</em><strong>יונים</strong><span>12 מוצרים</span></a>
+      <a class="pest-tile" href="#" onclick="filterCat('עש');return false;"><em>🦋</em><strong>עש</strong><span>10 מוצרים</span></a>
+      <a class="pest-tile" href="#" onclick="filterCat('אורגני');return false;"><em>🌿</em><strong>אורגני</strong><span>8 מוצרים</span></a>
     </div>
   </div>
 
@@ -986,12 +988,12 @@ footer {
   <div class="section inner">
     <div class="section-head">
       <h2>🔥 הנמכרים ביותר</h2>
-      <a class="see-all" href="#">כל המוצרים ←</a>
+      <a class="see-all" href="#" onclick="filterCat('הכל');return false;">כל המוצרים ←</a>
     </div>
     <div class="product-grid">
 
       <!-- Product 1 -->
-      <div class="product-card">
+      <div class="product-card" data-cat="נמלים">
         <div class="prod-img">
           <div class="prod-img-bg">🐜</div>
           🟢
@@ -1012,7 +1014,7 @@ footer {
       </div>
 
       <!-- Product 2 -->
-      <div class="product-card">
+      <div class="product-card" data-cat="תיקנים">
         <div class="prod-img">
           <div class="prod-img-bg">🪳</div>
           🔵
@@ -1034,7 +1036,7 @@ footer {
       </div>
 
       <!-- Product 3 -->
-      <div class="product-card">
+      <div class="product-card" data-cat="מכרסמים">
         <div class="prod-img">
           <div class="prod-img-bg">🐭</div>
           🪤
@@ -1055,7 +1057,7 @@ footer {
       </div>
 
       <!-- Product 4 -->
-      <div class="product-card">
+      <div class="product-card" data-cat="יונים">
         <div class="prod-img">
           <div class="prod-img-bg">🕊️</div>
           🦉
@@ -1075,7 +1077,7 @@ footer {
       </div>
 
       <!-- Product 5 -->
-      <div class="product-card">
+      <div class="product-card" data-cat="עש">
         <div class="prod-img">
           <div class="prod-img-bg">🦋</div>
           🔺
@@ -1097,7 +1099,7 @@ footer {
       </div>
 
       <!-- Product 6 -->
-      <div class="product-card">
+      <div class="product-card" data-cat="ציוד">
         <div class="prod-img">
           <div class="prod-img-bg">🔧</div>
           💦
@@ -1117,7 +1119,7 @@ footer {
       </div>
 
       <!-- Product 7 -->
-      <div class="product-card">
+      <div class="product-card" data-cat="יתושים">
         <div class="prod-img">
           <div class="prod-img-bg">🦟</div>
           🌐
@@ -1137,7 +1139,7 @@ footer {
       </div>
 
       <!-- Product 8 -->
-      <div class="product-card">
+      <div class="product-card" data-cat="אורגני">
         <div class="prod-img">
           <div class="prod-img-bg">🌿</div>
           🍃
@@ -1176,11 +1178,11 @@ footer {
   <div class="section inner">
     <div class="section-head">
       <h2>🕊️ הרחקת יונים ומכרסמים</h2>
-      <a class="see-all" href="#">ראה הכל ←</a>
+      <a class="see-all" href="#" onclick="filterCat('יונים');return false;">ראה הכל ←</a>
     </div>
     <div class="product-grid">
 
-      <div class="product-card">
+      <div class="product-card" data-cat="יונים">
         <div class="prod-img">
           <div class="prod-img-bg">🕊️</div>
           📌
@@ -1197,7 +1199,7 @@ footer {
         </div>
       </div>
 
-      <div class="product-card">
+      <div class="product-card" data-cat="יונים">
         <div class="prod-img">
           <div class="prod-img-bg">🕊️</div>
           🕸️
@@ -1214,7 +1216,7 @@ footer {
         </div>
       </div>
 
-      <div class="product-card">
+      <div class="product-card" data-cat="מכרסמים">
         <div class="prod-img">
           <div class="prod-img-bg">🐭</div>
           🏠
@@ -1231,7 +1233,7 @@ footer {
         </div>
       </div>
 
-      <div class="product-card">
+      <div class="product-card" data-cat="מכרסמים">
         <div class="prod-img">
           <div class="prod-img-bg">🐭</div>
           ⚡
@@ -1279,14 +1281,14 @@ footer {
     <div class="footer-col">
       <h4>קטגוריות</h4>
       <ul>
-        <li><a href="#">נמלים</a></li>
-        <li><a href="#">תיקנים וג'וקים</a></li>
-        <li><a href="#">מכרסמים</a></li>
-        <li><a href="#">יתושים</a></li>
-        <li><a href="#">הרחקת יונים</a></li>
-        <li><a href="#">עש ומזיקי מזון</a></li>
-        <li><a href="#">הדברה אורגנית</a></li>
-        <li><a href="#">ציוד מקצועי</a></li>
+        <li><a href="#" onclick="filterCat('נמלים');return false;">נמלים</a></li>
+        <li><a href="#" onclick="filterCat('תיקנים');return false;">תיקנים וג'וקים</a></li>
+        <li><a href="#" onclick="filterCat('מכרסמים');return false;">מכרסמים</a></li>
+        <li><a href="#" onclick="filterCat('יתושים');return false;">יתושים</a></li>
+        <li><a href="#" onclick="filterCat('יונים');return false;">הרחקת יונים</a></li>
+        <li><a href="#" onclick="filterCat('עש');return false;">עש ומזיקי מזון</a></li>
+        <li><a href="#" onclick="filterCat('אורגני');return false;">הדברה אורגנית</a></li>
+        <li><a href="#" onclick="filterCat('ציוד');return false;">ציוד מקצועי</a></li>
       </ul>
     </div>
 
@@ -1448,12 +1450,53 @@ function openChat() {
   if (!chatOpen) toggleChat();
 }
 
-/* ---- Category nav active ---- */
+/* ---- Category filtering ---- */
+function filterCat(cat) {
+  // Update nav active state
+  document.querySelectorAll('.cat-link').forEach(a => {
+    a.classList.toggle('on', a.dataset.filter === cat);
+  });
+
+  // Show/hide product cards
+  let found = 0;
+  document.querySelectorAll('.product-card').forEach(card => {
+    const cardCat = card.dataset.cat || '';
+    const matches = cat === 'הכל' || cardCat === cat;
+    card.classList.toggle('cat-hidden', !matches);
+    if (matches) found++;
+  });
+
+  // Show/hide empty state
+  let empty = document.getElementById('catEmpty');
+  if (!empty) {
+    empty = document.createElement('p');
+    empty.id = 'catEmpty';
+    empty.style.cssText = 'text-align:center;padding:2rem;color:var(--fg-muted);font-size:1.1rem;';
+    const grid = document.querySelector('.products-grid');
+    if (grid) grid.parentNode.insertBefore(empty, grid.nextSibling);
+  }
+  empty.textContent = found === 0 ? `לא נמצאו מוצרים בקטגוריה "${cat}"` : '';
+  empty.style.display = found === 0 ? 'block' : 'none';
+
+  // Update section heading
+  const heading = document.querySelector('.section-head h2');
+  if (heading) {
+    heading.textContent = cat === 'הכל' ? '🔥 הנמכרים ביותר' : `${cat} — כל המוצרים`;
+  }
+
+  // Scroll to products section
+  const productsSection = document.querySelector('main .section');
+  if (productsSection) {
+    productsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+}
+
+// Init: wire up nav links via data-filter
 document.querySelectorAll('.cat-link').forEach(a => {
   a.addEventListener('click', e => {
     e.preventDefault();
-    document.querySelectorAll('.cat-link').forEach(l => l.classList.remove('on'));
-    a.classList.add('on');
+    const cat = a.dataset.filter || 'הכל';
+    filterCat(cat);
   });
 });
 </script>
